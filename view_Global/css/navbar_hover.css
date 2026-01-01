@@ -1,0 +1,56 @@
+/* ================================
+   🔹 NAVBAR HOVER SLIDE DOWN
+=================================== */
+.hover-navbar {
+  position: fixed;
+  top: -60px; /* ซ่อนตอนแรก */
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: #2c2f33;
+  color: white;
+  display: flex;
+  justify-content: flex-start; /* เปลี่ยนจาก center -> ให้เริ่มชิดซ้าย */
+  align-items: center;
+  transition: top 0.3s ease;
+  z-index: 1000;
+  padding-left: 0; /* ลบ padding */
+  margin: 0;
+}
+
+.hover-navbar.visible {
+  top: 0; /* โผล่เมื่อมีคลาส visible */
+}
+
+.navbar-content {
+  width: 100%; /* ครอบเต็ม */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px; /* เพิ่ม padding เฉพาะขอบขวา/ซ้ายเล็กน้อย */
+}
+
+.navbar-left .logo {
+  font-weight: 600;
+  font-size: 18px;
+  margin-left: 8px; /* ปรับระยะให้โลโก้ไม่ติดขอบเกินไป */
+}
+
+.navbar-right {
+  display: flex;
+  gap: 10px;
+  margin-right: 10px;
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  transition: color 0.2s ease;
+}
+
+.nav-btn:hover {
+  color: #00bfa5;
+}

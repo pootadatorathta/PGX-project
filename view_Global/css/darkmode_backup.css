@@ -1,0 +1,1343 @@
+/* ============================================
+   🌙 DARK MODE THEME (CONSOLIDATED)
+   ============================================ */
+body.dark {
+  /* 1. Core CSS Variables for Dark Mode - Unified across all pages */
+  --bg: #111827;
+  --card-bg: #2f2f40;
+  --border: #3b3b4a;
+  --text-primary: #f9fafb;
+  --text-secondary: #e5e7eb;
+  --text-muted: #94a3b8;
+  --shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.35);
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --primary-light: rgba(59, 130, 246, 0.18);
+  
+  /* Admin-specific tokens */
+  --color-bg: #111827;
+  --color-surface: #2f2f40;
+  --color-border: #3b3b4a;
+  --color-text: #f9fafb;
+  --color-text-secondary: #e5e7eb;
+  --color-muted: #94a3b8;
+  --color-primary: #3b82f6;
+  --color-primary-hover: #2563eb;
+  --color-primary-light: rgba(59, 130, 246, 0.18);
+  --color-success: #22c55e;
+  --color-danger: #ef4444;
+  
+  /* Dashboard/stats icons */
+  --icon-all-bg: rgba(59, 130, 246, 0.15);
+  --icon-pre-bg: rgba(99, 102, 241, 0.15);
+  --icon-analytic-bg: rgba(168, 85, 247, 0.15);
+  --icon-post-bg: rgba(34, 197, 94, 0.15);
+  
+  /* Sidebar */
+  --sidebar-bg: #1f2937;
+  --sidebar-text: #e5e7eb;
+  --sidebar-active: rgba(59, 130, 246, 0.18);
+  
+  background: var(--bg);
+  color: var(--text-primary);
+}
+
+/* ============================================
+   🏢 LAYOUT & NAVIGATION
+   ============================================ */
+body.dark .sidebar {
+  background: var(--sidebar-bg);
+  border-right-color: var(--border);
+}
+
+body.dark .sidebar .logo,
+body.dark .sidebar h2 {
+  color: var(--sidebar-text);
+}
+
+body.dark .sidebar ul li {
+  color: var(--sidebar-text);
+}
+
+body.dark .sidebar ul li:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+body.dark .sidebar ul li.active {
+  background: var(--sidebar-active);
+  color: var(--sidebar-text);
+}
+
+body.dark .main-content,
+body.dark .content {
+  background: var(--bg);
+  color: var(--text-primary);
+}
+
+body.dark .page-header {
+  background: var(--card-bg);
+  border-color: var(--border);
+}
+
+/* ============================================
+   ✨ (แก้ไขส่วนนี้) ทำให้ปุ่มใน Header เป็นสีน้ำเงินตามรูป ✨
+   ============================================
+*/
+/* Unified header button styling across all pages */
+body.dark .icon-btn,
+body.dark .lang-btn,
+body.dark .dropbtn {
+  background: var(--card-bg);
+  color: var(--text-secondary);
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+}
+
+body.dark .icon-btn:hover,
+body.dark .lang-btn:hover,
+body.dark .dropbtn:hover {
+  background: var(--primary);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+  border-color: transparent;
+}
+
+body.dark .icon-btn:active,
+body.dark .lang-btn:active,
+body.dark .dropbtn:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+/* ============================================
+   (จบส่วนแก้ไขปุ่ม Header)
+   ============================================ */
+
+
+/* ปรับสีพื้นหลัง input และ select */
+body.dark .form-group input,
+body.dark .form-group select {
+  background-color: #374151;
+  border-color: #4b5563;
+  color: var(--text-primary);
+}
+
+body.dark #searchInput:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-light);
+}
+
+body.dark .cancel-btn {
+  background: transparent;
+  color: #fff;
+  border: 1px solid #4b5563;
+}
+
+body.dark .cancel-btn:hover {
+  background: rgba(255, 255, 255, 0.951);
+  border-color: #6b7280;
+  color: rgba(0, 0, 0, 0.707);
+}
+
+/* ============================================
+   🎨 POPUP & MODAL STYLING
+   ============================================ */
+body.dark .popup {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+body.dark .popup-content,
+body.dark .popup-box {
+  background: var(--card-bg);
+  border-color: var(--border);
+}
+
+body.dark .popup-header h3,
+body.dark .popup-box h3 {
+  color: var(--text-primary);
+}
+
+body.dark .popup-body label,
+body.dark .popup-box label {
+  color: var(--text-secondary);
+}
+
+body.dark .popup-body select,
+body.dark .popup-body input {
+  background-color: #374151;
+  border-color: #4b5563;
+  color: var(--text-primary);
+}
+
+body.dark .btn-primary {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+body.dark .btn-primary:hover {
+  background: var(--primary-hover);
+}
+
+body.dark .btn-secondary {
+  background-color: #374151;
+  color: var(--text-primary);
+  border-color: #4b5563;
+}
+
+body.dark .btn-secondary:hover {
+  background-color: #4b5563;
+}
+
+body.dark .close {
+  color: var(--text-muted);
+}
+
+body.dark .close:hover {
+  color: var(--text-primary);
+}
+
+/* ============================================
+   🎨 UNIFIED CARD & FORM SECTIONS
+   ============================================ */
+body.dark .card,
+body.dark section.card,
+body.dark .user-list-card,
+body.dark .table-container,
+body.dark .user-table-section,
+body.dark .specimen-layout,
+body.dark .specimen-form-card,
+body.dark .specimen-table-card,
+body.dark .specimen-table-panel,
+body.dark .card-specimen,
+body.dark .patient-box,
+body.dark .dna-box {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+body.dark .card h2,
+body.dark section.card h2,
+body.dark .card h3,
+body.dark section.card h3,
+body.dark .form-header h2,
+body.dark .specimen-table-header h2,
+body.dark .page-title h1,
+body.dark .page-heading h1 {
+  color: var(--text-primary);
+}
+
+body.dark .card h2::before {
+  background: linear-gradient(180deg, var(--primary) 0%, var(--primary-hover) 100%);
+}
+
+body.dark .card label,
+body.dark section.card label,
+body.dark .form-field label,
+body.dark .form-stack label span,
+body.dark .specimen-table-header p,
+body.dark .page-title p,
+body.dark .page-heading p {
+  color: var(--text-secondary);
+}
+
+/* Unified input/select/textarea styling */
+body.dark .card input[type="text"],
+body.dark .card input[type="password"],
+body.dark .card input[type="email"],
+body.dark .card input[type="number"],
+body.dark .card select,
+body.dark .card textarea,
+body.dark .form-field input,
+body.dark .form-field select,
+body.dark .form-grid input,
+body.dark .form-grid select,
+body.dark .inline-form input,
+body.dark .form-stack input,
+body.dark .form-stack select,
+body.dark .form-stack textarea {
+  background-color: #374151;
+  border-color: #4b5563;
+  color: var(--text-primary);
+}
+
+body.dark input::placeholder,
+body.dark textarea::placeholder {
+  color: var(--text-muted);
+}
+
+body.dark .card input:focus,
+body.dark .form-field input:focus,
+body.dark .form-grid input:focus,
+body.dark .card select:focus,
+body.dark .form-field select:focus,
+body.dark .form-grid select:focus,
+body.dark .inline-form input:focus,
+body.dark .form-stack input:focus,
+body.dark .form-stack select:focus,
+body.dark .form-stack textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+/* 🔹 2. Dropdown Menu, Input, Select - Unified styling */
+body.dark .dropdown-content {
+  background-color: var(--card-bg);
+  border-color: var(--border);
+  box-shadow: var(--shadow);
+}
+
+body.dark .dropdown-content a {
+  color: var(--text-secondary);
+}
+
+body.dark .dropdown-content a:hover {
+  background-color: var(--primary-light);
+  color: var(--primary);
+}
+
+body.dark :is(#searchInput, #tatFilter, input[type="text"], input[type="email"], input[type="password"], select, textarea) {
+  background-color: #374151;
+  border-color: #4b5563;
+  color: var(--text-primary);
+}
+
+body.dark input::placeholder,
+body.dark textarea::placeholder,
+body.dark #searchInput::placeholder {
+  color: var(--text-muted);
+}
+
+body.dark input:focus,
+body.dark select:focus,
+body.dark textarea:focus,
+body.dark #searchInput:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+/* 🔹 3. Primary buttons - Unified across all pages */
+body.dark .btn.primary,
+body.dark .next-btn,
+body.dark .confirm-btn {
+  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+  border: none;
+}
+
+body.dark .btn.primary:hover,
+body.dark .next-btn:hover,
+body.dark .confirm-btn:hover {
+  background: linear-gradient(135deg, var(--primary-hover), #1e40af);
+  box-shadow: 0 12px 28px rgba(59, 130, 246, 0.4);
+}
+
+/* 🔹 4. Unified table styling across all pages */
+body.dark .data-table-container th,
+body.dark .case-table thead th,
+body.dark table thead th,
+body.dark #user-table thead th,
+body.dark .specimen-table thead th {
+  background-color: var(--card-bg);
+  color: var(--text-muted);
+  border-color: var(--border);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+body.dark .data-table-container tbody tr,
+body.dark .case-table tbody tr,
+body.dark table tbody tr,
+body.dark #user-table tbody tr,
+body.dark .specimen-table tbody tr {
+  background-color: transparent;
+  color: var(--text-primary);
+  border-color: var(--border);
+}
+
+body.dark .data-table-container tbody tr:nth-child(even),
+body.dark .case-table tbody tr:nth-child(even) {
+  background-color: rgba(55, 65, 81, 0.3);
+}
+
+body.dark .data-table-container tbody tr:hover,
+body.dark .case-table tbody tr:hover,
+body.dark table tbody tr:hover,
+body.dark #user-table tbody tr:hover,
+body.dark .specimen-table tbody tr:hover {
+  background-color: var(--primary-light) !important;
+}
+
+body.dark .data-table-container tbody tr.selected,
+body.dark .data-table-container tbody tr.active,
+body.dark .data-table-container tbody tr.is-selected,
+body.dark .case-table tbody tr.selected,
+body.dark .case-table tbody tr.active,
+body.dark .case-table tbody tr.is-selected {
+  background-color: rgba(59, 130, 246, 0.25) !important;
+}
+
+body.dark table tbody td,
+body.dark .data-table-container tbody td,
+body.dark .case-table tbody td,
+body.dark .specimen-table tbody td {
+  color: var(--text-primary);
+  border-color: var(--border);
+}
+
+body.dark .no-data-row td {
+  background-color: rgba(55, 65, 81, 0.3);
+  color: var(--text-muted);
+}
+
+/* Universal table wrapper and base table styling */
+body.dark table,
+body.dark #user-table,
+body.dark .case-table,
+body.dark .specimen-table {
+  background-color: transparent !important;
+  border-color: var(--border);
+}
+
+body.dark .table-wrapper,
+body.dark .scrollable-table-wrapper {
+  background-color: transparent;
+  border-color: var(--border);
+}
+
+/* Table action buttons - unified styling */
+body.dark .Edit-btn,
+body.dark .table-action.edit,
+body.dark .btn-icon.edit {
+  background-color: #374151;
+  color: #93c5fd;
+  border-color: #60a5fa;
+}
+
+body.dark .Edit-btn:hover,
+body.dark .table-action.edit:hover,
+body.dark .btn-icon.edit:hover {
+  background-color: #434e61;
+  color: #c7d2fe;
+  border-color: #93c5fd;
+}
+
+body.dark .delete-btn,
+body.dark .table-action.delete,
+body.dark .btn-icon.delete {
+  background-color: #374151;
+  color: #fca5a5;
+  border-color: #f87171;
+}
+
+body.dark .delete-btn:hover,
+body.dark .table-action.delete:hover,
+body.dark .btn-icon.delete:hover {
+  background-color: #434e61;
+  color: #fecaca;
+  border-color: #fda4af;
+}
+
+/* 🔹 6. Unified scrollbar styling */
+body.dark ::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+body.dark ::-webkit-scrollbar-track {
+  background: rgba(55, 65, 81, 0.3);
+  border-radius: 5px;
+}
+
+body.dark ::-webkit-scrollbar-thumb {
+  background: #4b5563;
+  border-radius: 5px;
+}
+
+body.dark ::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+/* ============================================
+   🎨 UNIFIED BUTTON STYLING
+   ============================================ */
+body.dark .btn.primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+}
+
+body.dark .btn.primary:hover {
+  background: linear-gradient(135deg, var(--primary-hover), #1e40af);
+}
+
+body.dark .btn.secondary,
+body.dark .back-btn {
+  background-color: #374151;
+  color: var(--text-primary);
+  border-color: #4b5563;
+}
+
+body.dark .btn.secondary:hover,
+body.dark .back-btn:hover {
+  background-color: #4b5563;
+}
+
+body.dark .btn.ghost,
+body.dark .cancel-btn {
+  background-color: transparent;
+  color: var(--text-secondary);
+  border-color: #4b5563;
+}
+
+body.dark .btn.ghost:hover,
+body.dark .cancel-btn:hover {
+  background-color: #374151;
+}
+
+body.dark .btn.success {
+  background-color: var(--color-success);
+  color: #ffffff;
+}
+
+body.dark .btn.success:hover {
+  background-color: #059669;
+}
+
+/* Form messages */
+body.dark .form-message {
+  color: var(--text-primary);
+}
+
+body.dark .form-message.success {
+  background-color: rgba(34, 197, 94, 0.15);
+  color: var(--color-success);
+  border-left-color: var(--color-success);
+}
+
+body.dark .form-message.error {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: var(--color-danger);
+  border-left-color: var(--color-danger);
+}
+
+
+/* ============================================
+   🔥 SWEETALERT 2 DARK MODE FIX
+   ============================================ */
+body.dark .swal-dark {
+  background: var(--card-bg) !important;
+  color: var(--text-primary) !important;
+}
+
+body.dark .swal-dark .swal2-title,
+body.dark .swal-dark .swal2-html-container {
+  color: var(--text-primary) !important;
+}
+/* ❌ (ลบวงเล็บปีกกา '}' ที่เกินมาตรงนี้) */
+
+/* ============================================
+   🎨 AUDIT LOG PAGE DARK MODE
+   ============================================ */
+
+/* Audit log cards and sections */
+body.dark .audit-header {
+  color: #f9fafb;
+}
+
+body.dark .audit-header h2 {
+  color: #f9fafb;
+  font-weight: 600;
+}
+
+body.dark .audit-header .muted {
+  color: #d1d5db;
+}
+
+/* Filters section */
+body.dark .filters {
+  background-color: transparent;
+}
+
+body.dark .filter-group label {
+  color: #e5e7eb;
+  font-weight: 500;
+}
+
+body.dark .filter-group select,
+body.dark .filter-group input {
+  background-color: #374151;
+  border-color: #4b5563;
+  color: #f9fafb;
+}
+
+body.dark .filter-group select option {
+  background-color: #1f2937;
+  color: #f9fafb;
+}
+
+body.dark .filter-group select,
+body.dark select {
+  color: #f9fafb !important;
+}
+
+body.dark .filter-group select:focus,
+body.dark .filter-group input:focus {
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+body.dark #searchInput::placeholder {
+  color: #d1d5db;
+}
+
+/* Audit list items */
+body.dark .audit-list {
+  background-color: transparent;
+}
+
+body.dark .audit-item {
+  background-color: rgba(55, 65, 81, 0.3);
+  border-color: var(--border);
+  color: #f9fafb;
+}
+
+body.dark .audit-item:hover {
+  background-color: rgba(59, 130, 246, 0.08);
+  border-color: #60a5fa;
+}
+
+body.dark .audit-item .action-badge {
+  background-color: #374151;
+  color: #f9fafb !important;
+  border-color: #4b5563;
+  font-weight: 600;
+}
+
+body.dark .audit-item .action-badge span,
+body.dark .audit-item .action-badge strong {
+  color: #f9fafb !important;
+}
+
+body.dark .audit-item .timestamp {
+  color: #d1d5db;
+}
+
+body.dark .audit-item .user-name {
+  color: #93c5fd;
+  font-weight: 600;
+}
+
+body.dark .audit-item .target {
+  color: #e5e7eb;
+}
+
+body.dark .audit-item .description,
+body.dark .audit-item p {
+  color: #f3f4f6;
+}
+
+body.dark .audit-line .actor,
+body.dark .audit-line .target,
+body.dark .audit-line .action {
+  color: #f9fafb !important;
+}
+
+body.dark .audit-line .action {
+  color: #93c5fd !important;
+  font-weight: 700;
+}
+
+body.dark .audit-content {
+  color: #f9fafb !important;
+}
+
+body.dark .audit-meta {
+  color: #d1d5db !important;
+}
+
+/* Empty state */
+body.dark .empty-state {
+  color: #d1d5db;
+  background-color: transparent;
+}
+
+body.dark .empty-state i {
+  color: #9ca3af;
+  font-size: 3rem;
+}
+
+body.dark .empty-state p {
+  color: #d1d5db;
+  font-size: 1rem;
+}
+
+/* Popup settings */
+body.dark .popup {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+body.dark .popup-content {
+  background-color: var(--card-bg);
+  border-color: var(--border);
+}
+
+body.dark .popup-header h3 {
+  color: #f9fafb;
+  font-weight: 600;
+}
+
+body.dark .popup-body label {
+  color: #e5e7eb;
+  font-weight: 500;
+}
+
+body.dark .popup-body select,
+body.dark .popup-body input {
+  background-color: #374151;
+  border-color: #4b5563;
+  color: #f9fafb;
+}
+
+body.dark .btn-primary {
+  background-color: #2563eb;
+  color: white;
+}
+
+body.dark .btn-primary:hover {
+  background-color: #1d4ed8;
+}
+
+body.dark .btn-secondary {
+  background-color: #374151;
+  color: var(--text-primary);
+  border-color: #4b5563;
+}
+
+body.dark .btn-secondary:hover {
+  background-color: #4b5563;
+}
+
+/* ============================================
+   🎨 ADMIN PAGE TABLE FIX - FORCE OVERRIDE
+   ============================================ */
+body.dark table,
+body.dark #user-table,
+body.dark table#user-table {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+body.dark table thead,
+body.dark #user-table thead,
+body.dark table#user-table thead {
+  background-color: #2f2f40 !important;
+  background: #2f2f40 !important;
+}
+
+body.dark table thead th,
+body.dark #user-table thead th,
+body.dark table#user-table thead th {
+  background-color: #2f2f40 !important;
+  background: #2f2f40 !important;
+  color: #9ca3af !important;
+  text-transform: uppercase !important;
+  font-size: 0.85rem !important;
+  letter-spacing: 0.05em !important;
+  font-weight: 700 !important;
+  padding: 16px 18px !important;
+}
+
+body.dark table tbody,
+body.dark #user-table tbody,
+body.dark table#user-table tbody {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+body.dark table tbody tr,
+body.dark #user-table tbody tr,
+body.dark table#user-table tbody tr {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+body.dark table tbody tr:hover,
+body.dark #user-table tbody tr:hover,
+body.dark table#user-table tbody tr:hover {
+  background-color: rgba(59, 130, 246, 0.08) !important;
+  background: rgba(59, 130, 246, 0.08) !important;
+}
+
+body.dark table tbody td,
+body.dark #user-table tbody td,
+body.dark table#user-table tbody td {
+  color: #f9fafb !important;
+  padding: 16px 18px !important;
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+body.dark .table-wrapper {
+  background-color: transparent !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+/* ============================================
+   🎨 ADMIN SETTINGS PAGE DARK MODE
+   ============================================ */
+
+/* Main content and layout */
+body.dark .app-shell {
+  background-color: var(--bg);
+}
+
+body.dark .content {
+  background: linear-gradient(165deg, #111827 0%, #161f30 45%, #1b263b 100%);
+  color: var(--text-primary);
+}
+
+/* Page header */
+body.dark .page-title h1,
+body.dark .page-heading h1 {
+  color: #f9fafb;
+}
+
+body.dark .page-title p,
+body.dark .page-heading p {
+  color: #d1d5db;
+}
+
+/* Specimen layout and cards */
+body.dark .specimen-layout,
+body.dark .specimen-form-card,
+body.dark .specimen-table-card,
+body.dark .specimen-table-panel,
+body.dark .card-specimen {
+  background-color: var(--card-bg);
+  color: var(--text-primary);
+}
+
+body.dark .form-header h2,
+body.dark .specimen-table-header h2 {
+  color: #f9fafb;
+}
+
+body.dark .specimen-table-header p {
+  color: #d1d5db;
+}
+
+/* Form inputs */
+body.dark .inline-form input,
+body.dark .form-stack input,
+body.dark .form-stack select,
+body.dark .form-stack textarea {
+  background-color: #374151;
+  border-color: #4b5563;
+  color: #f9fafb;
+}
+
+body.dark .inline-form input::placeholder,
+body.dark .form-stack input::placeholder,
+body.dark .form-stack textarea::placeholder {
+  color: #9ca3af;
+}
+
+body.dark .inline-form input:focus,
+body.dark .form-stack input:focus,
+body.dark .form-stack select:focus,
+body.dark .form-stack textarea:focus {
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+body.dark .form-stack label span {
+  color: #e5e7eb;
+  font-weight: 500;
+}
+
+/* Specimen table */
+body.dark .specimen-table {
+  background-color: transparent;
+}
+
+body.dark .specimen-table thead {
+  background-color: var(--card-bg);
+}
+
+body.dark .specimen-table thead th {
+  color: #9ca3af;
+  background-color: var(--card-bg);
+  border-color: var(--border);
+}
+
+body.dark .specimen-table tbody tr {
+  background-color: transparent;
+  border-color: var(--border);
+}
+
+body.dark .specimen-table tbody tr:hover {
+  background-color: rgba(59, 130, 246, 0.08);
+}
+
+body.dark .specimen-table tbody td {
+  color: #f9fafb;
+  border-color: var(--border);
+}
+
+/* Buttons */
+body.dark .btn.primary {
+  background-color: #2563eb;
+  color: white;
+}
+
+body.dark .btn.primary:hover {
+  background-color: #1d4ed8;
+}
+
+body.dark .btn.secondary {
+  background-color: #374151;
+  color: #f9fafb;
+  border-color: #4b5563;
+}
+
+body.dark .btn.secondary:hover {
+  background-color: #4b5563;
+}
+
+body.dark .btn.ghost {
+  background-color: transparent;
+  color: #d1d5db;
+  border-color: #4b5563;
+}
+
+body.dark .btn.ghost:hover {
+  background-color: #374151;
+}
+
+body.dark .btn.success {
+  background-color: #059669;
+  color: white;
+}
+
+body.dark .btn.success:hover {
+  background-color: #047857;
+}
+
+/* Table action buttons */
+body.dark .table-action.edit {
+  background-color: #374151;
+  color: #93c5fd;
+  border-color: #60a5fa;
+}
+
+body.dark .table-action.edit:hover {
+  background-color: #434e61;
+  color: #c7d2fe;
+}
+
+body.dark .table-action.delete {
+  background-color: #374151;
+  color: #fca5a5;
+  border-color: #f87171;
+}
+
+body.dark .table-action.delete:hover {
+  background-color: #434e61;
+  color: #fecaca;
+}
+
+/* Form message */
+body.dark .form-message {
+  color: var(--text-primary);
+}
+
+body.dark .scrollable-table-wrapper {
+  background-color: transparent;
+}
+
+/* ============================================
+   🧬 INPUT STEP 1 MEDTECH PAGE DARK MODE
+   ============================================ */
+
+/* Container (scoped to Step 1 page) */
+body.dark.step1-page .container {
+  width: 760px !important;
+  margin: 2.8rem auto !important;
+  border-radius: 22px !important;
+  padding: 2.5rem 3rem !important;
+  background: linear-gradient(180deg, rgba(55, 58, 74, 0.98), rgba(45, 48, 64, 0.98)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5) !important;
+}
+
+body.dark.step1-page .container h3 {
+  color: #ffffff !important;
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+  margin-top: 0 !important;
+  margin-bottom: 1rem !important;
+}
+
+/* Patient Box */
+body.dark .patient-box {
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 14px !important;
+  background: rgba(60, 63, 82, 0.7) !important;
+  padding: 1.6rem !important;
+  margin-top: 1.2rem !important;
+  margin-bottom: 1.4rem !important;
+  box-shadow: none !important;
+}
+
+body.dark .patient-box table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  line-height: 1.5 !important;
+}
+
+body.dark .patient-box td {
+  padding: 6px 5px !important;
+  vertical-align: top !important;
+  line-height: 1.6 !important;
+  color: #cbd5e1 !important;
+}
+
+body.dark .patient-box td.label {
+  color: #cbd5e1 !important;
+  font-weight: 600 !important;
+  width: 35% !important;
+}
+
+body.dark .patient-box td.value {
+  color: #cbd5e1 !important;
+}
+
+/* DNA Section */
+body.dark .dna-section {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin-top: 0.5rem !important;
+  margin-bottom: 0 !important;
+}
+
+body.dark .dna-section label {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  white-space: nowrap !important;
+  margin: 0 !important;
+}
+
+body.dark .dna-section select {
+  padding: 0.55rem 1rem !important;
+  border-radius: 12px !important;
+  background: rgba(60, 63, 82, 0.9) !important;
+  color: #cbd5e1 !important;
+  border: 1.6px solid rgba(255, 255, 255, 0.15) !important;
+  font-size: 0.96rem !important;
+  min-width: 190px !important;
+}
+
+body.dark .dna-section select:hover {
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
+}
+
+body.dark .dna-section select:focus {
+  border-color: rgba(37, 99, 235, 0.55) !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.18) !important;
+}
+
+/* Button Area */
+body.dark .btn-area {
+  display: flex !important;
+  justify-content: flex-end !important;
+  gap: 0.8rem !important;
+  margin-top: 1.8rem !important;
+  margin-bottom: 0 !important;
+}
+
+body.dark .back-btn,
+body.dark .next-btn {
+  border-radius: 12px !important;
+  padding: 0.75rem 1.6rem !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  border: 1px solid transparent !important;
+  cursor: pointer !important;
+}
+
+body.dark .back-btn {
+  background: rgba(60, 63, 82, 0.9) !important;
+  color: #cbd5e1 !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+body.dark .back-btn:hover {
+  background: rgba(70, 73, 92, 1) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  transform: translateY(-1px) !important;
+}
+
+body.dark .next-btn {
+  background: #2563eb !important;
+  color: #ffffff !important;
+}
+
+body.dark .next-btn:hover {
+  background: #1d4ed8 !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Steps */
+body.dark .steps {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+  gap: 18px !important;
+  margin: 2.4rem 0 2rem !important;
+}
+
+body.dark .step,
+body.dark .step.done {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 54px !important;
+  height: 54px !important;
+  border-radius: 20px !important;
+  font-size: 1.2rem !important;
+  font-weight: 600 !important;
+  background: rgba(45, 48, 64, 0.95) !important;
+  color: #cbd5e1 !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 20px 38px rgba(0, 0, 0, 0.5) !important;
+}
+
+body.dark .step.active {
+  background: #2563eb !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  transform: translateY(-3px) !important;
+}
+
+body.dark .line {
+  width: 68px !important;
+  height: 4px !important;
+  border-radius: 999px !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  position: relative !important;
+  top: 25px !important;
+}
+
+body.dark .step.done + .line {
+  background: rgba(37, 99, 235, 0.4) !important;
+}
+
+/* ============================================
+   🧬 INPUT STEP 2 MEDTECH PAGE DARK MODE
+   ============================================ */
+
+/* Container (scoped to Step 2 page) */
+body.dark.step2-page .container {
+  width: 760px !important;
+  margin: 2.8rem auto !important;
+  border-radius: 22px !important;
+  padding: 2.5rem 3rem !important;
+  background: linear-gradient(180deg, rgba(55, 58, 74, 0.98), rgba(45, 48, 64, 0.98)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5) !important;
+}
+
+body.dark.step2-page .container h3 {
+  color: #ffffff !important;
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+  margin-top: 0 !important;
+  margin-bottom: 1rem !important;
+}
+
+/* DNA Box */
+body.dark .dna-box {
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 14px !important;
+  background: rgba(60, 63, 82, 0.7) !important;
+  padding: 1.8rem 2rem !important;
+  margin-top: 1.2rem !important;
+}
+
+body.dark .dna-box .info p {
+  color: #cbd5e1 !important;
+  line-height: 1.6 !important;
+}
+
+body.dark .dna-box .info strong {
+  color: #e5e7eb !important;
+  font-weight: 600 !important;
+}
+
+body.dark .dna-box hr {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Select Area */
+body.dark .select-area {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1rem !important;
+}
+
+body.dark .select-row {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 1.5rem !important;
+}
+
+body.dark .select-row label {
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  min-width: 60px !important;
+  text-align: right !important;
+}
+
+body.dark .select-row select {
+  padding: 0.55rem 1rem !important;
+  border-radius: 12px !important;
+  background: rgba(60, 63, 82, 0.9) !important;
+  color: #cbd5e1 !important;
+  border: 1.6px solid rgba(255, 255, 255, 0.15) !important;
+  transition: border-color 0.18s, box-shadow 0.18s !important;
+}
+
+body.dark .select-row select:hover {
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
+}
+
+body.dark .select-row select:focus {
+  border-color: rgba(37, 99, 235, 0.55) !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.18) !important;
+}
+
+/* Button Area */
+body.dark .btn-area {
+  display: flex !important;
+  justify-content: flex-end !important;
+  gap: 0.9rem !important;
+  margin-top: 1.8rem !important;
+}
+
+body.dark .back-btn,
+body.dark .confirm-btn {
+  border-radius: 12px !important;
+  padding: 0.75rem 1.6rem !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: transform 0.18s, box-shadow 0.18s !important;
+}
+
+body.dark .back-btn {
+  background: rgba(60, 63, 82, 0.9) !important;
+  color: #cbd5e1 !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+body.dark .back-btn:hover {
+  background: rgba(70, 73, 92, 1) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  transform: translateY(-1px) !important;
+}
+
+body.dark .confirm-btn {
+  background: #2563eb !important;
+  color: #ffffff !important;
+  border: none !important;
+  padding: 0.78rem 1.8rem !important;
+}
+
+body.dark .confirm-btn:hover {
+  background: #1d4ed8 !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Steps - ใช้ร่วมกับ step1 */
+body.dark .steps {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+  gap: 18px !important;
+  margin: 2.4rem 0 2rem !important;
+}
+
+body.dark .step,
+body.dark .step.done {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 54px !important;
+  height: 54px !important;
+  border-radius: 20px !important;
+  font-size: 1.2rem !important;
+  font-weight: 600 !important;
+  background: rgba(45, 48, 64, 0.95) !important;
+  color: #cbd5e1 !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 20px 38px rgba(0, 0, 0, 0.5) !important;
+}
+
+body.dark .step.active {
+  background: #2563eb !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  transform: translateY(-3px) !important;
+}
+
+body.dark .step.done {
+  background: rgba(53, 53, 139, 0.95) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+}
+
+body.dark .line {
+  width: 68px !important;
+  height: 4px !important;
+  border-radius: 999px !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  position: relative !important;
+  top: 25px !important;
+}
+
+body.dark .step.done + .line {
+  background: rgba(37, 99, 235, 0.4) !important;
+}
+
+/* Genotype Display - Step 2 */
+body.dark .dna-box p {
+  color: #cbd5e1 !important;
+}
+
+body.dark #genotype-display,
+body.dark [id*="genotype"] {
+  background: rgba(248, 249, 252, 0.15) !important;
+  color: #1f2937 !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  display: inline-block !important;
+  min-width: 100px !important;
+  text-align: center !important;
+}
+

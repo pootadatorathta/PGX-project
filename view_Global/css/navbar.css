@@ -1,0 +1,299 @@
+/* ============================================
+   🎨 1. ตัวแปร (Variables) และ สไตล์พื้นฐาน
+   ============================================ */
+:root {
+  /* 🔹 ชุดสี (Light Mode) */
+  --primary: #2563eb;         /* สีหลัก (น้ำเงิน) */
+  --primary-light: #eff6ff;   /* สีหลัก (อ่อน) */
+  --card-bg: #ffffff;        /* สีพื้นหลังการ์ด/ปุ่ม (ขาว) */
+  --body-bg: #f8fafc;         /* สีพื้นหลังเว็บ (เทาอ่อน) */
+  --text-primary: #1e293b;   /* สีตัวอักษรหลัก (เทาเข้ม) */
+  --text-secondary: #64748b; /* สีตัวอักษรรอง (เทา) */
+  --text-muted: #94a3b8;     /* สีตัวอักษร (จาง) */
+  --border: #e2e8f0;          /* สีเส้นขอบ */
+
+  /* 🔹 อื่นๆ */
+  --radius: 16px;             /* ค่าความโค้งมน */
+  --shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+  --transition: all 0.25s ease;
+}
+
+/* 🔹 2. สไตล์พื้นฐานของ Body */
+body {
+  font-family: "Noto Sans Thai", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--body-bg);
+  color: var(--text-primary);
+  margin: 0;
+  padding: 0;
+}
+
+/* ============================================
+   🧱 3. HEADER SECTION
+   ============================================ */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  position: relative;
+  z-index: 100;
+  
+}
+
+.page-header h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.header-buttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ============================================
+   🔘 4. ปุ่มทั่วไป (Theme, Lang, Dropdown)
+   ✨ (อัปเดตให้เหมือนรูปตัวอย่าง) ✨
+   ============================================ */
+
+/* 1. ใช้สไตล์ "ปุ่มสีน้ำเงิน" กับปุ่มทั้งหมดใน header */
+.icon-btn,
+.lang-btn,
+.dropbtn {
+  /* สีและฟอนต์ (จากรูปตัวอย่าง) */
+  background-color: #2563eb; /* สีน้ำเงินสดใส */
+  color: #ffffff; /* ตัวอักษรสีขาว */
+  font-weight: 600; /* ความหนาตัวอักษร */
+  font-size: 1rem; /* ปรับขนาดให้พอดีกับ header */
+
+  /* รูปทรง (จากรูปตัวอย่าง) */
+  border: none;
+  border-radius: 12px; /* ความโค้งมน */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); /* เงาปุ่ม */
+
+  /* การจัดวาง */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  line-height: 1; /* ป้องกันความสูงเพี้ยน */
+  
+  /* แอนิเมชัน */
+  transition: all 0.25s ease;
+}
+
+/* 2. ปรับขนาดปุ่มไอคอน (Theme) และปุ่มภาษา (Lang) ให้เป็นสี่เหลี่ยม */
+.icon-btn,
+.lang-btn {
+  width: 44px;  /* ขนาดที่เหมาะสม (กว้าง) */
+  height: 44px; /* ขนาดที่เหมาะสม (สูง) */
+  padding: 0; /* ไม่ต้องมี padding เพราะกำหนด w/h แล้ว */
+  font-size: 1.1rem; /* ปรับขนาดไอคอน/ตัวอักษร */
+}
+
+/* 3. สไตล์ปุ่ม Dropdown (มีไอคอน + ข้อความ) */
+.dropbtn {
+  padding: 12px 20px; /* padding ที่เหมาะสมสำหรับ header */
+  gap: 8px; /* ระยะห่างระหว่างไอคอนกับข้อความ */
+}
+
+/* 4. เอฟเฟกต์ Hover (เหมือนในรูปตัวอย่าง) */
+.icon-btn:hover,
+.lang-btn:hover,
+.dropbtn:hover {
+  background-color: #1d4ed8; /* สีน้ำเงินเข้มขึ้น */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 5. เอฟเฟกต์ Active (กดปุ่ม) */
+.icon-btn:active,
+.lang-btn:active,
+.dropbtn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+
+/* ============================================
+   📂 5. DROPDOWN MENU
+   ============================================ */
+.dropdown { 
+  position: relative; 
+  z-index: 1000;
+}
+
+.dropdown-content {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px); /* ปรับระยะห่างจากปุ่ม */
+  min-width: 180px;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 8px 0;
+  display: none;
+  z-index: 1001;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.dropdown-content a {
+  color: var(--text-secondary);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  transition: var(--transition);
+  font-size: 0.95rem;
+}
+
+.dropdown-content a:hover {
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+.dropdown-content.show {
+  display: block;
+}
+
+
+/* ============================================
+   ⚙️ 6. SETTINGS POPUP
+   ============================================ */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.popup.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup-content {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  width: 90%;
+  max-width: 500px;
+  box-shadow: var(--shadow);
+  transform: scale(0.95);
+  transition: transform 0.3s ease;
+}
+
+.popup.open .popup-content {
+  transform: scale(1);
+}
+
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.popup-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.close {
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--text-muted);
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.close:hover {
+  color: var(--text-primary);
+}
+
+.popup-body {
+  padding: 24px;
+}
+
+.setting-item {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.setting-item label {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.setting-item select,
+.setting-item input[type="checkbox"] {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 14px;
+  background: var(--card-bg);
+  color: var(--text-primary);
+}
+
+.setting-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.popup-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 16px 24px;
+  border-top: 1px solid var(--border);
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #1d4ed8;
+}
+
+.btn-secondary {
+  background: var(--border);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  background: #d1d5db;
+}

@@ -1,0 +1,1057 @@
+/* ============================================
+   🌙 UNIFIED DARK MODE THEME
+   Consistent styling across all pages
+   
+   IMPORTANT: Dark mode only changes COLORS.
+   All box model properties (padding, margin,
+   border-width, box-sizing) must remain
+   identical to light mode to prevent layout shift.
+   ============================================ */
+
+html.dark,
+html.dark body {
+  /* Core CSS Variables */
+  --bg: #111827;
+  --card-bg: #2f2f40;
+  --border: #3b3b4a;
+  --text-primary: #f9fafb;
+  --text-secondary: #e5e7eb;
+  --text-muted: #94a3b8;
+  
+  /* Shadows */
+  --shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.35);
+  
+  /* Primary colors */
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --primary-light: rgba(59, 130, 246, 0.18);
+  
+  /* Admin-specific tokens (for compatibility) */
+  --color-bg: #111827;
+  --color-surface: #2f2f40;
+  --color-border: #3b3b4a;
+  --color-text: #f9fafb;
+  --color-text-secondary: #e5e7eb;
+  --color-muted: #94a3b8;
+  --color-primary: #3b82f6;
+  --color-primary-hover: #2563eb;
+  --color-primary-light: rgba(59, 130, 246, 0.18);
+  --color-success: #22c55e;
+  --color-danger: #ef4444;
+  
+  /* Dashboard/stats icons */
+  --icon-all-bg: rgba(59, 130, 246, 0.15);
+  --icon-pre-bg: rgba(99, 102, 241, 0.15);
+  --icon-analytic-bg: rgba(168, 85, 247, 0.15);
+  --icon-post-bg: rgba(34, 197, 94, 0.15);
+  
+  /* Sidebar */
+  --sidebar-bg: #1f2937;
+  --sidebar-text: #e5e7eb;
+  --sidebar-active: rgba(59, 130, 246, 0.18);
+  
+  background: var(--bg) !important;
+  color: var(--text-primary) !important;
+}
+
+html.dark body {
+  background: var(--bg) !important;
+  color: var(--text-primary) !important;
+}
+
+/* ============================================
+   LAYOUT & NAVIGATION
+   ============================================ */
+html.dark .sidebar {
+  background: var(--sidebar-bg);
+  border-right-color: var(--border);
+}
+
+html.dark .sidebar .logo,
+html.dark .sidebar h2 {
+  color: var(--sidebar-text);
+}
+
+html.dark .sidebar ul li {
+  color: var(--sidebar-text);
+}
+
+html.dark .sidebar ul li:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+html.dark .sidebar ul li.active {
+  background: var(--sidebar-active);
+  color: var(--sidebar-text);
+}
+
+html.dark .main-content,
+html.dark .content,
+html.dark .app-shell {
+  background: var(--bg);
+  color: var(--text-primary);
+}
+
+html.dark .page-header {
+  border-color: var(--border);
+  /* Box model properties inherited from light mode - only colors change */
+}
+
+/* ============================================
+   HEADER CONTROLS
+   ============================================ */
+html.dark .icon-btn,
+html.dark .lang-btn,
+html.dark .dropbtn {
+  background: var(--card-bg);
+  color: var(--text-secondary);
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+}
+
+html.dark .icon-btn:hover,
+html.dark .lang-btn:hover,
+html.dark .dropbtn:hover {
+  background: var(--primary);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+  border-color: transparent;
+}
+
+html.dark .icon-btn:active,
+html.dark .lang-btn:active,
+html.dark .dropbtn:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ============================================
+   DROPDOWN MENUS
+   ============================================ */
+html.dark .dropdown-content,
+html.dark .dropdown-menu {
+  background-color: var(--card-bg);
+  border-color: var(--border);
+  box-shadow: var(--shadow);
+}
+
+html.dark .dropdown-content a,
+html.dark .dropdown-menu a {
+  color: var(--text-secondary);
+}
+
+html.dark .dropdown-content a:hover,
+html.dark .dropdown-menu a:hover {
+  background-color: var(--primary-light);
+  color: var(--primary);
+}
+
+/* ============================================
+   FORMS & INPUTS
+   ============================================ */
+html.dark input[type="text"],
+html.dark input[type="email"],
+html.dark input[type="password"],
+html.dark input[type="number"],
+html.dark select,
+html.dark textarea,
+html.dark #searchInput,
+html.dark #tatFilter {
+  background-color: #374151;
+  border-color: #4b5563;
+  color: var(--text-primary);
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: var(--text-muted);
+}
+
+html.dark input:focus,
+html.dark select:focus,
+html.dark textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+html.dark .btn.primary,
+html.dark .next-btn,
+html.dark .confirm-btn {
+  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+  border: none;
+}
+
+html.dark .btn.primary:hover,
+html.dark .next-btn:hover,
+html.dark .confirm-btn:hover {
+  background: linear-gradient(135deg, var(--primary-hover), #1e40af);
+  box-shadow: 0 12px 28px rgba(59, 130, 246, 0.4);
+}
+
+html.dark .btn.secondary,
+html.dark .back-btn {
+  background-color: #374151;
+  color: var(--text-primary);
+  border-color: #4b5563;
+}
+
+html.dark .btn.secondary:hover,
+html.dark .back-btn:hover {
+  background-color: #4b5563;
+}
+
+html.dark .btn.ghost,
+html.dark .cancel-btn {
+  background-color: transparent;
+  color: var(--text-secondary);
+  border-color: #4b5563;
+}
+
+html.dark .btn.ghost:hover,
+html.dark .cancel-btn:hover {
+  background-color: #374151;
+}
+
+html.dark .btn.success {
+  background-color: var(--color-success);
+  color: #ffffff;
+}
+
+html.dark .btn.success:hover {
+  background-color: #059669;
+}
+
+html.dark .btn-primary {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+html.dark .btn-primary:hover {
+  background: var(--primary-hover);
+}
+
+html.dark .btn-secondary {
+  background-color: #374151;
+  color: var(--text-primary);
+  border-color: #4b5563;
+}
+
+html.dark .btn-secondary:hover {
+  background-color: #4b5563;
+}
+
+/* ============================================
+   CARDS & SECTIONS
+   ============================================ */
+html.dark .card,
+html.dark section.card,
+html.dark .user-list-card,
+html.dark .table-container,
+html.dark .user-table-section,
+html.dark .specimen-layout,
+html.dark .specimen-form-card,
+html.dark .specimen-table-card,
+html.dark .specimen-table-panel,
+html.dark .card-specimen,
+html.dark .patient-box,
+html.dark .dna-box,
+html.dark .popup-box {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+html.dark .card h2,
+html.dark section.card h2,
+html.dark .card h3,
+html.dark section.card h3,
+html.dark .form-header h2,
+html.dark .specimen-table-header h2,
+html.dark .page-title h1,
+html.dark .page-heading h1 {
+  color: var(--text-primary);
+}
+
+html.dark .card h2::before {
+  background: linear-gradient(180deg, var(--primary) 0%, var(--primary-hover) 100%);
+}
+
+html.dark .card label,
+html.dark section.card label,
+html.dark .form-field label,
+html.dark .form-stack label span,
+html.dark .specimen-table-header p,
+html.dark .page-title p,
+html.dark .page-heading p {
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   TABLES
+   ============================================ */
+html.dark table,
+html.dark #user-table,
+html.dark .case-table,
+html.dark .specimen-table,
+html.dark .data-table-container table {
+  background-color: transparent !important;
+  border-color: var(--border);
+  color: var(--text-primary);
+}
+
+html.dark .table-wrapper,
+html.dark .scrollable-table-wrapper {
+  background-color: transparent;
+  border-color: var(--border);
+}
+
+html.dark table thead,
+html.dark table thead th,
+html.dark .data-table-container th,
+html.dark .case-table thead th,
+html.dark #user-table thead th,
+html.dark .specimen-table thead th {
+  background-color: var(--card-bg) !important;
+  color: var(--text-muted) !important;
+  border-color: var(--border);
+}
+
+html.dark table tbody tr,
+html.dark .data-table-container tbody tr,
+html.dark .case-table tbody tr,
+html.dark #user-table tbody tr,
+html.dark .specimen-table tbody tr {
+  background-color: transparent !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border) !important;
+}
+
+html.dark .data-table-container tbody tr:nth-child(even),
+html.dark .case-table tbody tr:nth-child(even) {
+  background-color: rgba(55, 65, 81, 0.3) !important;
+}
+
+html.dark table tbody tr:hover,
+html.dark .data-table-container tbody tr:hover,
+html.dark .case-table tbody tr:hover,
+html.dark #user-table tbody tr:hover,
+html.dark .specimen-table tbody tr:hover {
+  background-color: var(--primary-light) !important;
+}
+
+html.dark .data-table-container tbody tr.selected,
+html.dark .data-table-container tbody tr.active,
+html.dark .data-table-container tbody tr.is-selected,
+html.dark .case-table tbody tr.selected,
+html.dark .case-table tbody tr.active,
+html.dark .case-table tbody tr.is-selected {
+  background-color: rgba(59, 130, 246, 0.25) !important;
+}
+
+html.dark table tbody td,
+html.dark .data-table-container tbody td,
+html.dark .case-table tbody td,
+html.dark .specimen-table tbody td {
+  color: var(--text-primary);
+  border-color: var(--border);
+}
+
+html.dark .no-data-row td {
+  background-color: rgba(55, 65, 81, 0.3);
+  color: var(--text-muted);
+}
+
+/* ============================================
+   TABLE ACTION BUTTONS
+   ============================================ */
+html.dark .Edit-btn,
+html.dark .table-action.edit,
+html.dark .btn-icon.edit {
+  background-color: #374151;
+  border-color: #60a5fa;
+}
+
+html.dark .Edit-btn:hover,
+html.dark .table-action.edit:hover,
+html.dark .btn-icon.edit:hover {
+  background-color: #434e61;
+  color: #698aaf;
+  border-color: #93c5fd;
+}
+
+html.dark .delete-btn,
+html.dark .table-action.delete,
+html.dark .btn-icon.delete {
+  background-color: #374151;
+  border-color: #f87171;
+}
+
+html.dark .delete-btn:hover,
+html.dark .table-action.delete:hover,
+html.dark .btn-icon.delete:hover {
+  background-color: #434e61;
+  color: #be7373;
+  border-color: #fda4af;
+}
+
+/* ============================================
+   FORM MESSAGES
+   ============================================ */
+html.dark .form-message {
+  color: var(--text-primary);
+}
+
+html.dark .form-message.success {
+  background-color: rgba(34, 197, 94, 0.15);
+  color: var(--color-success);
+  border-left-color: var(--color-success);
+}
+
+html.dark .form-message.error {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: var(--color-danger);
+  border-left-color: var(--color-danger);
+}
+
+/* ============================================
+   POPUPS & MODALS
+   ============================================ */
+html.dark .popup,
+html.dark .modal {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+html.dark .popup-content,
+html.dark .modal-content {
+  background: var(--card-bg);
+  border-color: var(--border);
+}
+
+html.dark .popup-header h3,
+html.dark .modal-header h3 {
+  color: var(--text-primary);
+}
+
+html.dark .popup-body label,
+html.dark .modal-body label {
+  color: var(--text-secondary);
+}
+
+html.dark .close {
+  color: var(--text-muted);
+}
+
+html.dark .close:hover {
+  color: var(--text-primary);
+}
+
+/* ============================================
+   AUDIT LOG SPECIFIC
+   ============================================ */
+html.dark .audit-item {
+  background-color: rgba(55, 65, 81, 0.3);
+  border-color: var(--border);
+  color: var(--text-primary);
+}
+
+html.dark .audit-item:hover {
+  background-color: var(--primary-light);
+  border-color: var(--primary);
+}
+
+html.dark .audit-line .actor,
+html.dark .audit-line .target {
+  color: var(--text-primary);
+}
+
+html.dark .audit-line .action {
+  color: var(--primary);
+}
+
+html.dark .audit-meta {
+  color: var(--text-muted);
+}
+
+html.dark .empty-state {
+  color: var(--text-muted);
+}
+
+/* ============================================
+   INPUT STEP PAGES (MEDTECH/PHARMACY)
+   ============================================ */
+html.dark.step1-page .container,
+html.dark.step2-page .container,
+html.dark.step3-page .container {
+  background: linear-gradient(180deg, rgba(55, 58, 74, 0.98), rgba(45, 48, 64, 0.98));
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+}
+
+html.dark .dna-section label,
+html.dark .select-row label {
+  color: var(--text-primary);
+}
+
+html.dark .dna-section select,
+html.dark .select-row select {
+  background: rgba(60, 63, 82, 0.9);
+  color: var(--text-secondary);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+html.dark .step {
+  background: rgba(45, 48, 64, 0.95);
+  color: var(--text-secondary);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+html.dark .step.active {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: transparent;
+}
+
+html.dark .step.done {
+  background: rgba(53, 53, 139, 0.95);
+  color: #ffffff;
+}
+
+html.dark .line {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+html.dark .step.done + .line {
+  background: rgba(37, 99, 235, 0.4);
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+html.dark ::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: rgba(55, 65, 81, 0.3);
+  border-radius: 5px;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #4b5563;
+  border-radius: 5px;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+/* ============================================
+   SWEETALERT2
+   ============================================ */
+html.dark .swal-dark {
+  background: var(--card-bg) !important;
+  color: var(--text-primary) !important;
+}
+
+html.dark .swal-dark .swal2-title,
+html.dark .swal-dark .swal2-html-container {
+  color: var(--text-primary) !important;
+}
+
+/* ============================================
+   HARDCODED BACKGROUND OVERRIDES
+   Fix for white backgrounds in light mode CSS
+   ============================================ */
+html.dark #tatFilter,
+html.dark select,
+html.dark input[type="text"],
+html.dark input[type="email"],
+html.dark input[type="password"],
+html.dark input[type="number"],
+html.dark textarea {
+  color: var(--text-primary) !important;
+}
+
+html.dark .no-data-row td {
+  background-color: var(--card-bg) !important;
+}
+
+html.dark .main-content,
+html.dark .app-shell,
+html.dark .content {
+  background: var(--bg) !important;
+}
+
+/* Chart and stat card backgrounds */
+html.dark .stat-card,
+html.dark .metric-card,
+html.dark .chart-container,
+html.dark canvas {
+  background: var(--card-bg) !important;
+}
+
+/* Chart text and labels visibility */
+html.dark .stat-card h4,
+html.dark .stat-card h3,
+html.dark .stat-card p,
+html.dark .chart-container h4,
+html.dark .chart-container p,
+html.dark .stat-card-header h4 {
+  color: var(--text-primary) !important;
+}
+
+html.dark .stat-card p,
+html.dark .chart-container p,
+html.dark #top-rejects-subtitle,
+html.dark #top-dna-subtitle,
+html.dark #top-hospitals-subtitle {
+  color: var(--text-secondary) !important;
+}
+
+/* Chart center text (donut charts) */
+html.dark .chart-container canvas + div,
+html.dark canvas + div,
+html.dark [class*="chart"] div {
+  color: var(--text-primary) !important;
+}
+
+html.dark .toggle-group .small-btn {
+  background: #374151 !important;
+  border-color: #4b5563 !important;
+  color: var(--text-secondary) !important;
+}
+
+html.dark .toggle-group .small-btn.active {
+  background: var(--primary) !important;
+  color: #ffffff !important;
+}
+
+/* Table containers and sections */
+html.dark .data-table-container,
+html.dark .table-wrapper,
+html.dark .table-container,
+html.dark section.data-table-container,
+html.dark section.data-table-section {
+  background: var(--card-bg) !important;
+}
+
+/* Stats grid should have transparent background */
+html.dark .stats-grid,
+html.dark section.stats-grid,
+html.dark .quick-stats {
+  background: transparent !important;
+}
+
+/* Sections containing tables/data should keep card background */
+
+
+/* But stats/metrics sections should be transparent */
+html.dark section.stats-grid,
+html.dark section.quick-stats,
+html.dark section.metrics-row {
+  background: transparent !important;
+}
+
+html.dark .toolbar,
+html.dark .scanner-popup-box,
+html.dark .popup,
+html.dark .popup-content,
+html.dark .popup-box {
+  background: var(--card-bg) !important;
+}
+
+/* Login page specific */
+html.dark .login-container {
+  background: var(--card-bg) !important;
+}
+
+html.dark .left-panel {
+  background: linear-gradient(180deg, #1f2937, #111827) !important;
+}
+
+html.dark .left-panel h1 {
+  color: var(--text-primary) !important;
+}
+
+html.dark .left-panel p {
+  color: var(--text-secondary) !important;
+}
+
+html.dark .right-panel {
+  background: var(--card-bg) !important;
+}
+
+html.dark .login-box h2 {
+  color: var(--text-primary) !important;
+}
+
+html.dark .login-box label {
+  color: var(--text-primary) !important;
+}
+
+html.dark .language-toggle button {
+  background: #374151 !important;
+  color: var(--text-secondary) !important;
+  border-color: #4b5563 !important;
+}
+
+html.dark .language-toggle button.active {
+  background: #111 !important;
+  color: #fff !important;
+  border-color: #111 !important;
+}
+
+/* Preserve colored icon backgrounds - adjust opacity for dark mode */
+html.dark .stat-icon,
+html.dark .card-icon {
+  opacity: 0.95;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Specific stat box icons - keep their colors */
+html.dark .stat-box.stat-pending .stat-icon {
+  background: linear-gradient(135deg, #3b82f6, #2563eb) !important;
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4), 0 0 0 1px rgba(59, 130, 246, 0.3) !important;
+  border: 1px solid rgba(59, 130, 246, 0.5) !important;
+}
+
+html.dark .stat-box.stat-normal .stat-icon {
+  background: linear-gradient(135deg, #10b981, #059669) !important;
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4), 0 0 0 1px rgba(16, 185, 129, 0.3) !important;
+  border: 1px solid rgba(16, 185, 129, 0.5) !important;
+}
+
+html.dark .stat-box.stat-warning .stat-icon {
+  background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+  box-shadow: 0 6px 16px rgba(245, 158, 11, 0.4), 0 0 0 1px rgba(245, 158, 11, 0.3) !important;
+  border: 1px solid rgba(245, 158, 11, 0.5) !important;
+}
+
+html.dark .stat-box.stat-overdue .stat-icon {
+  background: linear-gradient(135deg, #ef4444, #dc2626) !important;
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.4), 0 0 0 1px rgba(239, 68, 68, 0.3) !important;
+  border: 1px solid rgba(239, 68, 68, 0.5) !important;
+}
+
+/* Card icons should keep their semantic colors */
+html.dark .icon-all {
+  background-color: rgba(59, 130, 246, 0.2) !important;
+}
+
+html.dark .icon-pre {
+  background-color: rgba(99, 102, 241, 0.2) !important;
+}
+
+html.dark .icon-analytic {
+  background-color: rgba(168, 85, 247, 0.2) !important;
+}
+
+html.dark .icon-post {
+  background-color: rgba(34, 197, 94, 0.2) !important;
+}
+
+html.dark .icon-pending {
+  background-color: rgba(59, 130, 246, 0.2) !important;
+}
+
+html.dark .icon-reject {
+  background-color: rgba(239, 68, 68, 0.2) !important;
+}
+
+/* Request action buttons - ensure equal sizing */
+html.dark .request-action-btn.primary {
+  flex: 1 !important;
+}
+
+html.dark .request-action-btn.danger {
+  flex: 1 !important;
+}
+
+/* Request info icon - dark background */
+html.dark .request-info-icon {
+  background: #1f2937 !important;
+  color: var(--text-secondary) !important;
+}
+
+/* SweetAlert2 / Modal dark mode */
+html.dark .swal2-popup {
+  background: var(--card-bg) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border) !important;
+}
+
+html.dark .swal2-title {
+  color: var(--text-primary) !important;
+}
+
+html.dark .swal2-html-container,
+html.dark .swal2-content {
+  color: var(--text-secondary) !important;
+}
+
+html.dark .swal2-html-container p,
+html.dark .swal2-html-container div {
+  color: var(--text-secondary) !important;
+}
+
+/* Override inline background styles in SweetAlert content */
+html.dark .swal2-html-container p[style*="background"],
+html.dark .swal2-html-container div[style*="background"],
+html.dark .swal2-html-container [style*="background"] {
+  background: var(--bg) !important;
+  color: var(--text-secondary) !important;
+}
+
+/* Force all text in SweetAlert to be visible in dark mode */
+html.dark .swal2-html-container * {
+  color: var(--text-secondary) !important;
+}
+
+html.dark .swal2-html-container strong {
+  color: var(--text-primary) !important;
+}
+
+html.dark .swal2-input,
+html.dark .swal2-textarea {
+  background: var(--bg) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border) !important;
+}
+
+html.dark .swal2-input:focus,
+html.dark .swal2-textarea:focus {
+  border-color: var(--primary) !important;
+}
+
+html.dark .swal2-confirm {
+  background: linear-gradient(135deg, #3b82f6) !important;
+}
+
+html.dark .swal2-cancel {
+  background: var(--card-bg) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border) !important;
+}
+
+html.dark .swal2-close {
+  color: var(--text-secondary) !important;
+}
+
+html.dark .swal2-close:hover {
+  color: var(--text-primary) !important;
+}
+
+/* Generic modal/popup dark mode */
+html.dark .popup,
+html.dark .modal,
+html.dark .popup-content,
+html.dark .modal-content {
+  background: var(--card-bg) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border) !important;
+}
+
+html.dark .popup-header,
+html.dark .modal-header {
+  background: var(--card-bg) !important;
+  color: var(--text-primary) !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+html.dark .popup-body,
+html.dark .modal-body {
+  background: var(--card-bg) !important;
+  color: var(--text-secondary) !important;
+}
+
+html.dark .popup-footer,
+html.dark .modal-footer {
+  background: var(--card-bg) !important;
+  border-top: 1px solid var(--border) !important;
+}
+
+/* Input Step 1 Medtech Page - Dark Mode */
+
+html.dark .step1-page .page-header {
+  background: var(--card-bg) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border) !important;
+}
+
+html.dark .step1-page .container {
+  background: linear-gradient(145deg, #2d3040, #383d4f) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+html.dark .step1-page .container h3 {
+  color: #ffffff !important;
+  font-size: 1.4rem !important;
+  margin-bottom: 1.5rem !important;
+  padding-bottom: 0.8rem !important;
+  border-bottom: 2px solid rgba(59, 130, 246, 0.3) !important;
+}
+
+html.dark .step1-page .patient-box {
+  background: linear-gradient(135deg, rgba(45, 48, 64, 0.6), rgba(55, 58, 74, 0.6)) !important;
+  border: 1px solid rgba(59, 130, 246, 0.3) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+  border-radius: 16px !important;
+}
+
+html.dark .step1-page .patient-box td {
+  color: #cbd5e1 !important;
+}
+
+html.dark .step1-page .patient-box td.label {
+  color: #cbd5e1 !important;
+  font-weight: 600;
+}
+
+html.dark .step1-page .dna-section label {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+}
+
+html.dark .step1-page .dna-section select {
+  background: linear-gradient(135deg, rgba(45, 48, 64, 0.9), rgba(55, 58, 74, 0.9)) !important;
+  color: #e0e7ff !important;
+  border: 1.6px solid rgba(59, 130, 246, 0.3) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+  transition: all 0.3s ease !important;
+}
+
+html.dark .step1-page .dna-section select:hover {
+  border-color: rgba(59, 130, 246, 0.5) !important;
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.3) !important;
+  transform: translateY(-1px);
+}
+
+html.dark .step1-page .dna-section select:focus {
+  border-color: rgba(59, 130, 246, 0.7) !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2), 0 6px 16px rgba(59, 130, 246, 0.3) !important;
+}
+
+html.dark .step1-page .dna-section select option {
+  background: #2d2f40 !important;
+  color: #cbd5e1 !important;
+}
+
+html.dark .step1-page .back-btn {
+  background: linear-gradient(135deg, rgba(60, 63, 82, 0.9), rgba(70, 73, 92, 0.9)) !important;
+  color: #e0e7ff !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+  transition: all 0.3s ease !important;
+}
+
+html.dark .step1-page .back-btn:hover {
+  background: linear-gradient(135deg, rgba(70, 73, 92, 1), rgba(80, 83, 102, 1)) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3) !important;
+  transform: translateY(-2px) !important;
+}
+
+html.dark .step1-page .next-btn {
+  background: linear-gradient(135deg, #3b82f6, #2563eb) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4) !important;
+  transition: all 0.3s ease !important;
+}
+
+html.dark .step1-page .next-btn:hover {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8) !important;
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.5) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Login Page - Theme Toggle Button */
+.theme-toggle-btn {
+  position: absolute;
+  top: 20px;
+  right: 140px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.9);
+  color: #1f2937;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.theme-toggle-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+html.dark .theme-toggle-btn {
+  background: rgba(45, 48, 64, 0.9);
+  color: #fbbf24;
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+html.dark .theme-toggle-btn:hover {
+  border-color: rgba(251, 191, 36, 0.3);
+  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.2);
+}
+
+/* PDF Viewer Page - Dark Mode */
+html.dark body.pdf-dark-bg {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%) !important;
+  color: #e4e4e7 !important;
+}
+
+html.dark .pdf-top-bar {
+  background: rgba(30, 30, 46, 0.8) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+html.dark .pdf-window {
+  background: rgba(30, 30, 46, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5) !important;
+}
+
+html.dark .pdf-toolbar {
+  background: rgba(20, 20, 30, 0.8) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+html.dark .pdf-window-title,
+html.dark .pdf-icon-btn {
+  color: #e4e4e7 !important;
+}
+
+html.dark .pdf-icon-btn {
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+html.dark .pdf-icon-btn:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+html.dark .pdf-frame-wrap {
+  background: rgba(15, 15, 25, 0.5) !important;
+}
