@@ -1,0 +1,1 @@
+async function compare(req, res) { }
