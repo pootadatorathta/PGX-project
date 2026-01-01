@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile | PGX Platform</title>
+  <script>(function(){const t=localStorage.getItem('theme-mode');t==='dark'&&document.documentElement.classList.add('dark')})();</script>
+  <link rel="stylesheet" href="./css/profile_medtech.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../../view_Global/css/navbar.css" />
+  <link rel="stylesheet" href="../../view_Global/css/darkmode.css" />
+</head>
+<body>
+  <div class="profile-page">
+    <header class="page-header">
+      <div class="header-left">
+        <button type="button" class="icon-btn back-btn" id="btnBack" aria-label="Back">
+          <span class="icon">←</span>
+        </button>
+        <div>
+          <h1>Profile</h1>
+          <p>จัดการข้อมูลส่วนตัวและการตั้งค่าการใช้งานของคุณ</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="themeToggle" class="icon-btn theme-toggle" aria-label="Toggle theme">
+          <i class="fa fa-moon"></i>
+        </button>
+        <button id="langToggle" class="lang-btn">TH</button>
+        
+        <div class="dropdown">
+          <button class="dropbtn" id="dropdownBtn">
+            <i class="fa fa-user-circle"></i> <span id="userDisplayName">Loading...</span> <i class="fa fa-caret-down"></i>
+          </button>
+          <div id="dropdownMenu" class="dropdown-content">
+            <a href="#" id="profile-link" class="dropdown-item">Profile</a>
+            <a href="#">About</a>
+            <a href="#" id="logout">Logout</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <section class="card">
+        <div class="card-header">
+          <h2>ข้อมูลส่วนตัว</h2>
+          <div id="profileMessage" class="message"></div>
+        </div>
+        <form id="profileForm" class="form-grid">
+          <label class="form-field">
+            <span>ชื่อ <span class="required">*</span></span>
+            <input type="text" id="firstName" placeholder="กรอกชื่อ" required>
+          </label>
+          <label class="form-field">
+            <span>นามสกุล <span class="required">*</span></span>
+            <input type="text" id="lastName" placeholder="กรอกนามสกุล" required>
+          </label>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+              <i class="fa fa-save"></i> บันทึกการเปลี่ยนแปลง
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>ลายเซ็นดิจิทัล</h2>
+        <p class="card-description">อัปโหลดลายเซ็นของคุณสำหรับการยืนยันเอกสาร</p>
+        
+        <div class="signature-section">
+          <div class="signature-preview" id="signaturePreview">
+            <div class="signature-placeholder" id="signaturePlaceholder">
+              <i class="fa fa-signature"></i>
+              <p>ยังไม่มีลายเซ็น</p>
+            </div>
+            <img id="signatureImage" style="display: none;" alt="Signature">
+          </div>
+          
+          <div class="signature-actions">
+            <input type="file" id="signatureInput" accept="image/*" style="display: none;">
+            <button type="button" class="btn btn-secondary" id="btnUploadSignature">
+              <i class="fa fa-upload"></i> อัปโหลดลายเซ็น
+            </button>
+            <button type="button" class="btn btn-danger" id="btnDeleteSignature" style="display: none;">
+              <i class="fa fa-trash"></i> ลบลายเซ็น
+            </button>
+          </div>
+          <small class="hint">รองรับไฟล์: JPG, PNG, GIF (ขนาดไม่เกิน 2MB)</small>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>ข้อมูลบัญชี</h2>
+        <div class="info-grid">
+          <div class="info-item">
+            <label>ชื่อผู้ใช้</label>
+            <p id="infoUsername">-</p>
+          </div>
+          <div class="info-item">
+            <label>บทบาท</label>
+            <p id="infoRole">-</p>
+          </div>
+          <div class="info-item">
+            <label>รหัสโรงพยาบาล</label>
+            <p id="infoHospitalId">-</p>
+          </div>
+          <div class="info-item">
+            <label>สร้างเมื่อ</label>
+            <p id="infoCreatedAt">-</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+  <script src="../../view_Global/js/userProfile.js"></script>
+  <script src="../../view_Global/js/darkmode.js"></script>
+  <script src="./js/profile_medtech.js"></script>
+</body>
+</html>

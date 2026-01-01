@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <script>(function(){const t=localStorage.getItem('theme-mode');t==='dark'&&document.documentElement.classList.add('dark')})();</script>
+  <link rel="stylesheet" href="./css/login.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+  <link rel="stylesheet" href="../view_Global/css/darkmode.css" />
+</head>
+
+<body>
+  <div class="login-container">
+    <!-- Left side -->
+    <div class="left-panel">
+      <img src="../view_Global/png/Srinakharinwirot_Logo_EN_Color.png" alt="Logo" class="left-logo">
+      <h1>Welcome Back</h1>
+      <p>Please sign in to continue</p>
+    </div>
+
+    <!-- Right side -->
+    <div class="right-panel">
+      <div class="language-toggle">
+        <button id="lang-en" class="active">EN</button>
+        <button id="lang-th">TH</button>
+      </div>
+
+      <button id="themeToggle" class="theme-toggle-btn">
+        <i class="fa fa-moon"></i>
+      </button>
+
+      <div class="login-box">
+        <h2>Login</h2>
+        <form>
+          <label for="username" id="label-username">Username</label>
+          <input type="text" id="username" placeholder="Enter your username" />
+
+          <label for="password" id="label-password">Password</label>
+          <input type="password" id="password" placeholder="Enter your password" />
+
+          <button type="submit" id="btn-login">Login</button>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+  <script src="../view_Global/js/darkmode.js"></script>
+  <script src="./js/login.js"></script>
+  </body>
+</html>

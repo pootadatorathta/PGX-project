@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <script>(function(){const t=localStorage.getItem('theme-mode');t==='dark'&&document.documentElement.classList.add('dark')})();</script>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../../view_Global/css/global.css"> 
+  <link rel="stylesheet" href="./css/dashboard_pharmacy.css" />
+  <link rel="stylesheet" href="../../view_Global/css/menu.css">
+  <link rel="stylesheet" href="../../view_Global/css/navbar.css">
+  <link rel="stylesheet" href="../../view_Global/css/navbar_hover.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../view_Global/css/darkmode.css">
+</head>
+<body>
+  <!-- แถบ Navbar -->
+  <div class="hover-navbar">
+    <div class="navbar-content">
+      <div class="navbar-left">
+        <img src="../../view_Global/png/pgx-logo.png" alt="PGX Logo" class="logo" style="height: 35px;">
+      </div>
+      <div class="navbar-right">
+        <button class="nav-btn close"><i class="fa fa-xmark"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Container หลัก -->
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <img src="../../view_Global/png/pgx-logo.png" alt="PGX Logo" class="logo" style="width: 80px; margin: 15px auto 25px; display: block;">
+      <ul>
+        <li id="dashboard-btn-pharmacy" class="active">Dashboard</li>
+        <li id="test-request-manager-btn-pharmacy">จัดการคำขอตรวจ</li>
+        <li id="information-btn-pharmacy">ตรวจสอบข้อมูล</li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      
+      <!-- Header Section -->
+      <header class="page-header">
+        <h2>Dashboard</h2>
+        <div class="header-buttons">
+          <button id="themeToggle" class="icon-btn">
+            <i class="fa fa-moon"></i>
+          </button>
+          <button id="langToggle" class="lang-btn">TH</button>
+
+          <!-- Dropdown -->
+          <div class="dropdown">
+            <button class="dropbtn" id="dropdownBtn">
+              <i class="fa fa-user-circle"></i> Admin <i class="fa fa-caret-down"></i>
+            </button>
+            <div id="dropdownMenu" class="dropdown-content">
+              <a href="#" id="profile-link" class="dropdown-item">Profile</a>
+              <a href="#" class="dropdown-item">About</a>
+              <a href="#" id="logout" class="dropdown-item">Logout</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Top metrics -->
+      <section class="metrics-row">
+        <div class="metric-card">
+          <div class="metric-icon bg-primary"><i class="fa fa-list-check"></i></div>
+          <div>
+            <div class="metric-number" id="m-total">0</div>
+            <div class="metric-label">จำนวนเคสทั้งหมดวันนี้</div>
+            <div class="metric-change" id="percent-total">100.00%</div>
+          </div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon bg-info"><i class="fa fa-rotate"></i></div>
+          <div>
+            <div class="metric-number" id="m-progress">0</div>
+            <div class="metric-label">เคสที่อยู่ระหว่างดำเนินการ</div>
+            <div class="metric-change" id="percent-progress">0.00%</div>
+          </div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon bg-success"><i class="fa fa-circle-check"></i></div>
+          <div>
+            <div class="metric-number" id="m-done">0</div>
+            <div class="metric-label">เคสที่เสร็จสิ้น</div>
+            <div class="metric-change" id="percent-done">0.00%</div>
+          </div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon bg-danger"><i class="fa fa-triangle-exclamation"></i></div>
+          <div>
+            <div class="metric-number" id="m-error">0</div>
+            <div class="metric-label">เคสที่ผิดพลาด</div>
+            <div class="metric-change" id="percent-error">0.00%</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Charts -->
+      <section class="dashboard-stats">
+        <div class="stats-grid">
+
+          <!-- Combined: สถิติการใช้งาน + สรุปอัตราการปฏิเสธสิ่งส่งตรวจ -->
+          <div class="stat-card">
+            <!-- สถิติการใช้งาน -->
+            <div class="stat-card-header">
+              <h4><i class="fa fa-chart-line"></i> สถิติการใช้งาน</h4>
+              <div class="toggle-group">
+                <button class="small-btn active" data-range="daily">รายวัน</button>
+                <button class="small-btn" data-range="weekly">รายสัปดาห์</button>
+              </div>
+            </div>
+            <p id="usage-subtitle">สรุป: รายวัน</p>
+            <canvas id="usageChart" height="100"></canvas>
+
+            <!-- เส้นแบ่ง -->
+            <div class="chart-divider"></div>
+
+            <!-- สรุปอัตราการปฏิเสธสิ่งส่งตรวจ -->
+            <div class="stat-card-header">
+              <h4><i class="fa fa-triangle-exclamation"></i> สรุปอัตราการปฏิเสธสิ่งส่งตรวจ</h4>
+              <div class="toggle-group">
+                <button class="small-btn active" data-error-range="week">7 วัน</button>
+                <button class="small-btn" data-error-range="month">30 วัน</button>
+              </div>
+            </div>
+            <p id="error-subtitle">สรุป: 7 วันล่าสุด</p>
+            <canvas id="errorRateChart" height="100"></canvas>
+          </div>
+
+          <!-- Donut TAT -->
+          <div class="stat-card">
+            <h4><i class="fa fa-clock"></i> ติดตาม TAT</h4>
+            <canvas id="tatDonut" height="120"></canvas>
+            <div class="chart-legend">
+              <span class="legend-item"><span class="dot dot-success"></span><span>ปกติ (ใน SLA)</span></span>
+              <span class="legend-item"><span class="dot dot-info"></span><span>กำลังดำเนินการ</span></span>
+              <span class="legend-item"><span class="dot dot-danger"></span><span>เสี่ยงเกิน SLA</span></span>
+            </div>
+          </div>
+
+          <!-- Gauge KPI -->
+          <div class="stat-card">
+            <h4><i class="fa fa-gauge-high"></i> สรุปอัตราการปฏิเสธ</h4>
+            <p>อัตราการปฏิเสธสิ่งส่งตรวจ (เฉลี่ย): <strong id="rejectionRateText">0%</strong></p>
+            <canvas id="kpiGauge" height="120"></canvas>
+          </div>
+          
+          <!-- Top 5 Rejected Specimens -->
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <h4><i class="fa fa-list-ol"></i> 5 อันดับสิ่งส่งตรวจที่ถูกปฏิเสธมากที่สุด</h4>
+            </div>
+            <p id="top-rejects-subtitle">ข้อมูลจากฐานข้อมูล (ช่วงเวลา: วันนี้)</p>
+            <canvas id="topRejectsChart" height="140"></canvas>
+          </div>
+
+          <!-- Top 5 DNA Most Found -->
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <h4><i class="fa fa-dna"></i> 5 อันดับ DNA ที่พบมากที่สุด</h4>
+            </div>
+            <p id="top-dna-subtitle">ข้อมูลจากฐานข้อมูล (ช่วงเวลา: วันนี้)</p>
+            <canvas id="topDnaChart" height="140"></canvas>
+          </div>
+
+          <!-- Top 5 Hospitals by Submissions -->
+          <div class="stat-card" id="card-hospitals">
+            <div class="stat-card-header">
+              <h4><i class="fa fa-hospital"></i> 5 อันดับชนิดสิ่งส่งตรวจที่ใช้มากที่สุด</h4>
+            </div>
+            <p id="top-hospitals-subtitle">ข้อมูลจากฐานข้อมูล (ช่วงเวลา: วันนี้)</p>
+            <canvas id="topHospitalsChart" height="140"></canvas>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Settings Popup -->
+    <div id="settingsPopup" class="popup" style="display: none;">
+      <div class="popup-content">
+        <div class="popup-header">
+          <h3>Settings</h3>
+          <span class="close" id="closeSettings">&times;</span>
+        </div>
+        <div class="popup-body">
+          <div class="setting-item">
+            <label>Language:</label>
+            <select id="languageSetting">
+              <option value="th">ไทย (Thai)</option>
+              <option value="en">English</option>
+            </select>
+          </div>
+          <div class="setting-item">
+            <label>Theme:</label>
+            <select id="themeSetting">
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+            </select>
+          </div>
+          <div class="setting-item">
+            <label>Notifications:</label>
+            <input type="checkbox" id="notificationsSetting" checked>
+          </div>
+        </div>
+        <div class="popup-footer">
+          <button class="btn-primary" id="saveSettings">Save</button>
+          <button class="btn-secondary" id="cancelSettings">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Script -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+  
+    <script src="../../view_Global/js/userProfile.js"></script>
+  <script src="../../view_Global/js/darkmode.js"></script>
+  <script src="./js/dashboard_pharmacy.js"></script>
+  <script src="../../view_Global/js/menu.js"></script>
+  <script src="../../view_Global/js/navbar_hover.js"></script>
+</body>
+</html>

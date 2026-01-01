@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Audit Log</title>
+	<script>(function(){const t=localStorage.getItem('theme-mode');t==='dark'&&document.documentElement.classList.add('dark')})();</script>
+	<!-- Reuse admin layout styles for sidebar + header -->
+	<link rel="stylesheet" href="../../view_Global/css/global.css"> 
+	<link rel="stylesheet" href="./css/adminpage.css" />
+	<link rel="stylesheet" href="./css/auditlog.css" />
+	<link rel="stylesheet" href="../../view_Global/css/navbar.css">
+	<link rel="stylesheet" href="../../view_Global/css/menu.css">
+	<link rel="stylesheet" href="../../view_Global/css/navbar_hover.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+	<link rel="stylesheet" href="../../view_Global/css/darkmode.css" />
+	<!-- Removed Google Fonts and inline body font to use admin page font -->
+	<!-- <link rel="preconnect" href="https://fonts.googleapis.com" /> -->
+	<!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> -->
+	<!-- <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700&display=swap" rel="stylesheet" /> -->
+	<!-- <style> body { font-family: "Prompt", Segoe UI, Tahoma, sans-serif; } </style> -->
+  
+</head>
+<body>
+
+	<!-- แถบ Navbar -->
+  <div class="hover-navbar">
+    <div class="navbar-content">
+      <div class="navbar-left">
+        <img src="../../view_Global/png/pgx-logo.png" alt="PGX Logo" class="logo" style="height: 35px;">
+      </div>
+      <div class="navbar-right">
+        <button class="nav-btn close"><i class="fa fa-xmark"></i></button>
+      </div>
+    </div>
+  </div>
+
+	<div class="container">
+		<!-- Sidebar: same structure/styles as adminpage -->
+
+		<aside class="sidebar">
+      		<img src="../../view_Global/png/pgx-logo.png" alt="PGX Logo" class="logo" style="width: 80px; margin: 15px auto 25px; display: block;">
+			<ul>
+				<li id="admin-btn" >Employee</li>
+				<li id="auditlog-btn" class="active">Audit Log</li>
+				<li id="admin_settings-btn">Settings</li>
+			</ul>
+    	</aside>
+
+		
+		<!-- Main -->
+		<main class="main-content">
+			<!-- Header: reuse admin header controls -->
+			<header class="page-header">
+				<div class="page-title">
+					<h1>Audit Log</h1>
+					<p>ติดตามกิจกรรมล่าสุดในระบบ</p>
+				</div>
+				<div class="header-buttons">
+					<button id="themeToggle" class="icon-btn" title="เปลี่ยนธีม">
+						<i class="fa fa-moon"></i>
+					</button>
+					<button id="langToggle" class="lang-btn" title="สลับภาษา">TH</button>
+					<div class="dropdown">
+						<button class="dropbtn" id="dropdownBtn">
+							<i class="fa fa-user-circle"></i>
+							Admin
+							<i class="fa fa-caret-down"></i>
+						</button>
+						<div id="dropdownMenu" class="dropdown-content">
+							<a href="#" id="profile-link" class="dropdown-item">Profile</a>
+							<a href="#" class="dropdown-item">About</a>
+							<a href="#" id="logout" class="dropdown-item">Logout</a>
+						</div>
+					</div>
+				</div>
+			</header>
+
+			<!-- Filters + Search -->
+			<section class="card">
+				<div class="filters">
+					<div class="filter-group">
+						<label for="filterUser">Filter by User</label>
+						<select id="filterUser">
+							<option value="all">All</option>
+						</select>
+					</div>
+					<div class="filter-group">
+						<label for="filterAction">Filter by Action</label>
+						<select id="filterAction">
+							<option value="all">All</option>
+							<option value="created">Created</option>
+							<option value="updated">Updated</option>
+							<option value="moved">Moved</option>
+							<option value="deleted">Deleted</option>
+							<option value="role-updated">Role Updated</option>
+							<option value="invited">Invited</option>
+							<option value="login">Login</option>
+						</select>
+					</div>
+					<div class="filter-group grow">
+						<label for="searchInput">Search</label>
+						<input id="searchInput" type="text" placeholder="ค้นหาคำในกิจกรรม เช่น ชื่อผู้ใช้ เป้าหมาย ..."/>
+					</div>
+				</div>
+			</section>
+
+			<!-- Audit list -->
+			<section class="card">
+				<div class="audit-header">
+					<h2>กิจกรรมล่าสุด</h2>
+					<span id="auditCount" class="muted"></span>
+				</div>
+				<ul id="auditList" class="audit-list" aria-live="polite"></ul>
+				<div id="emptyState" class="empty-state" style="display:none;">
+					<i class="fa-regular fa-clipboard"></i>
+					<p>ไม่มีกิจกรรมตามเงื่อนไขที่เลือก</p>
+				</div>
+				
+				<!-- Pagination Controls -->
+				<div id="paginationContainer" class="pagination-container" style="display:none;">
+					<button id="btnFirstPage" class="pagination-btn" title="หน้าแรก">
+						<i class="fa fa-angles-left"></i>
+					</button>
+					<button id="btnPrevPage" class="pagination-btn" title="ก่อนหน้า">
+						<i class="fa fa-angle-left"></i>
+					</button>
+					<span id="pageInfo" class="page-info">หน้า 1 / 1</span>
+					<button id="btnNextPage" class="pagination-btn" title="ถัดไป">
+						<i class="fa fa-angle-right"></i>
+					</button>
+					<button id="btnLastPage" class="pagination-btn" title="หน้าสุดท้าย">
+						<i class="fa fa-angles-right"></i>
+					</button>
+					<select id="itemsPerPage" class="items-per-page">
+						<option value="10" selected>10 / หน้า</option>
+						<option value="20">20 / หน้า</option>
+						<option value="50">50 / หน้า</option>
+						<option value="100">100 / หน้า</option>
+					</select>
+				</div>
+			</section>
+		</main>
+
+		<!-- Settings Popup (same markup as adminpage) -->
+		<div id="settingsPopup" class="popup" style="display: none;">
+			<div class="popup-content">
+				<div class="popup-header">
+					<h3>Settings</h3>
+					<span class="close" id="closeSettings">&times;</span>
+				</div>
+				<div class="popup-body">
+					<div class="setting-item">
+						<label>Language:</label>
+						<select id="languageSetting">
+							<option value="th">ไทย (Thai)</option>
+							<option value="en">English</option>
+						</select>
+					</div>
+					<div class="setting-item">
+						<label>Theme:</label>
+						<select id="themeSetting">
+							<option value="light">Light</option>
+							<option value="dark">Dark</option>
+						</select>
+					</div>
+					<div class="setting-item">
+						<label>Notifications:</label>
+						<input type="checkbox" id="notificationsSetting" checked>
+					</div>
+				</div>
+				<div class="popup-footer">
+					<button class="btn-primary" id="saveSettings">Save</button>
+					<button class="btn-secondary" id="cancelSettings">Cancel</button>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+	<script src="../../view_Global/js/userProfile.js"></script>
+	<script src="./js/auditlog.js"></script>
+	<script src="../../view_Global/js/darkmode.js"></script>
+	<script src="../../view_Global/js/navbar.js"></script>
+	<script src="../../view_Global/js/menu.js"></script>
+	<script src="../../view_Global/js/navbar_hover.js"></script>
+</body>
+</html>

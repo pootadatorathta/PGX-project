@@ -1,0 +1,496 @@
+:root {
+  --page-bg: linear-gradient(165deg, #f5f7fb 0%, #eef1f8 45%, #ffffff 100%);
+  --surface-main: #f2f4fb;
+  --panel-bg: #ffffff;
+  --panel-border: rgba(15, 23, 42, 0.08);
+  --card-bg: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --shadow-strong: 0 28px 60px rgba(15, 23, 42, 0.12);
+  --accent-blue: #4263ff;
+  --accent-purple: #7a4dff;
+  --accent-green: #36b66e;
+  --accent-red: #ff6b75;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #f5f7fb;
+  transition: background 0.3s ease;
+}
+
+html.dark body {
+  background: #0f0f0f;
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+  background: #f5f7fb;
+}
+
+html.dark .container {
+  background: #0f0f0f;
+}
+
+/* ============================================
+   🧩 MAIN CONTENT AREA
+   ============================================ */
+.main-content {
+  flex: 1;
+  padding: 32px 40px 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background: linear-gradient(165deg, #f5f7fb 0%, #eef1f8 45%, #ffffff 100%);
+}
+
+.main-content h1 {
+    margin-bottom: 20px;
+}
+
+
+
+/* ============================================
+   🔍 TOOLBAR (Search + Add Button)
+   ============================================ */
+.toolbar {
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: 20px;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-strong);
+}
+
+.toolbar-left {
+  flex: 1;
+  min-width: 400px;
+  max-width: 600px;
+  position: relative;
+}
+
+.toolbar-left .fa-search {
+  position: absolute;
+  top: 50%;
+  left: 18px; /* ระยะห่างจากขอบซ้าย */
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none; /* ทำให้คลิกทะลุไอคอนไปที่ input ได้ */
+}
+
+.toolbar-left input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 16px;
+  padding: 14px 48px 14px 52px;
+  color: var(--text-primary);
+  font-size: 1.05rem;
+}
+
+body.dark .toolbar-left input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #f8fbff;
+}
+
+.toolbar-left i {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.toolbar-right .btn.primary {
+  background: linear-gradient(135deg, #4f7afe, #6b4dff);
+  border: none;
+  border-radius: 16px;
+  padding: 14px 28px;
+  font-weight: 600;
+  box-shadow: 0 12px 24px rgba(79, 122, 254, 0.35);
+}
+
+#searchInput {
+  width: 100%;
+  padding: 14px 16px 14px 45px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: transparent;
+  font-size: 15px;
+  color: var(--text-primary);
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  outline: none;
+}
+#searchInput:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-light);
+  outline: none;
+}
+
+#tatFilter {
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #fff;
+  cursor: pointer;
+  color: var(--text-secondary);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background-color 0.25s ease, color 0.25s ease, opacity 0.25s ease, transform 0.2s ease;
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #fff;
+  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.35);
+}
+
+.btn.primary:hover {
+  transform: translateY(-1px);
+}
+
+.btn.outline {
+  border: 1px solid var(--primary);
+  background: transparent;
+  color: var(--primary);
+}
+
+
+.btn:hover {
+  opacity: 0.95;
+}
+
+
+/* ============================================
+   📋 TABLE SECTION (Patient List)
+   ============================================ */
+  .case-table .table-wrapper {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.case-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.case-table thead {
+  background: #f9fafb;
+}
+
+.case-table th,
+.case-table td {
+  padding: 16px 20px;
+  text-align: left;
+  font-size: 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+
+.case-table th {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+
+.case-table tbody tr {
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+.case-table tbody tr:hover {
+  background: rgba(59, 130, 246, 0.08);
+}
+
+.case-table tbody tr.selected {
+  background: rgba(59, 130, 246, 0.12);
+}
+
+
+
+/* ============================================
+   🪟 POPUP FORM (Light Theme)
+   ============================================ */
+
+/* --- Overlay (พื้นหลัง) --- */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(17, 24, 39, 0.6); /* ปรับให้โปร่งแสงพอดีกับธีมขาว */
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+  animation: fadeInOverlay 0.3s ease;
+}
+
+@keyframes fadeInOverlay {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* --- กล่อง Popup --- */
+.popup-box.large-form {
+  background: var(--card-bg); /* <-- เปลี่ยนเป็นสีขาว */
+  color: var(--text-secondary); /* <-- เปลี่ยนสีตัวอักษรเป็นสีเทาเข้ม */
+  border-radius: 16px;
+  padding: 28px 32px;
+  width: 90%;
+  max-width: 800px;
+  box-shadow: var(--shadow); /* <-- ใช้เงาของธีมหลัก */
+  border: 1px solid var(--border); /* <-- ใช้สีเส้นขอบของธีมหลัก */
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* --- หัวข้อ "เพิ่มข้อมูลผู้ป่วย" --- */
+.popup-box h3 {
+  color: var(--text-primary); /* <-- เปลี่ยนเป็นสีดำ */
+  font-size: 20px;
+  margin: 0 0 24px 0;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+/* --- Grid ของฟอร์ม --- */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 24px;
+}
+
+/* --- กลุ่มของ Label และ Input --- */
+.form-group label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary); /* <-- สีเทาเข้ม */
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  background: var(--card-bg, #ffffff) !important;
+  border: 1px solid var(--border, #d1d5db);
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: var(--text-primary);
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+/* --- ปุ่ม Save / Cancel --- */
+.form-actions {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.save-btn,
+.cancel-btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  min-width: 120px;
+}
+
+.save-btn {
+  background: var(--primary);
+  color: white;
+  transition: opacity 0.2s ease, background 0.2s ease;
+}
+.save-btn:hover:not(:disabled) {
+  opacity: 0.9;
+}
+.save-btn:disabled {
+  background: #9ca3af;
+  opacity: 0.6;
+  cursor: not-allowed !important;
+}
+
+.cancel-btn {
+  background: #f3f4f6; /* <-- เปลี่ยนเป็นสีเทาอ่อน */
+  color: var(--text-secondary); /* <-- เปลี่ยนเป็นสีเทาเข้ม */
+  border: 1px solid #d1d5db;
+}
+.cancel-btn:hover {
+  background: #e5e7eb;
+}
+
+
+
+
+
+/* ============================================
+   📷 SCANNER POPUP (ดีไซน์ใหม่)
+   ============================================ */
+.scanner-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* ทำให้พื้นหลังมืดกว่าเดิมเล็กน้อย */
+  display: none; /* ซ่อนไว้ก่อน */
+  justify-content: center;
+  align-items: center;
+  z-index: 1001; /* ให้อยู่เหนือ popup อื่น */
+}
+
+.scanner-popup-box {
+  background: rgba(47, 55, 70, 0.25);
+  color: #f7fafc;
+  padding: 32px 40px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 420px;
+  text-align: center;
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(25px);
+}
+
+.scanner-popup-box h3 {
+  margin-top: 0;
+  font-size: 24px;
+  letter-spacing: 0.5px;
+}
+
+.scanner-popup-box .scanner-visual {
+  margin: 30px 0;
+  padding: 20px;
+  border-radius: 12px;
+  background: rgba(148, 163, 184, 0.3);
+  position: relative;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scanner-popup-box .scanner-visual .fa-barcode {
+  font-size: 150px;
+  color: rgba(255, 255, 255, 0.15);
+}
+
+/* --- เส้นสแกน Animation --- */
+.scanner-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #f87171; /* สีแดงสด */
+  box-shadow: 0 0 15px 2px #ef4444;
+  animation: scan 2.5s linear infinite;
+}
+
+@keyframes scan {
+  0% {
+    top: 0%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+.scanner-popup-box p {
+  color: rgba(226, 232, 240, 0.9);
+  margin-bottom: 30px;
+}
+
+.scanner-popup-box .close-btn {
+  background: rgba(71, 85, 105, 0.7);
+  color: #f7fafc;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  padding: 10px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.scanner-popup-box .close-btn:hover {
+  background: rgba(100, 116, 139, 0.9);
+  border-color: rgba(148, 163, 184, 0.5);
+}
+
+
+
+.swal-form {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  align-items: center;
+  gap: 1em;
+  text-align: left;
+}
+.swal-form label {
+  font-weight: bold;
+}
+
+/* ============================================
+   🌙 DARK MODE OVERRIDES
+   ============================================ */
+html.dark #tatFilter {
+  background: var(--card-bg);
+  color: var(--text-secondary);
+  border-color: var(--border);
+}
+
+html.dark .form-group input,
+html.dark .form-group select {
+  background: #3a3d52 !important;
+  border-color: var(--border);
+  color: var(--text-primary) !important;
+}
+
+html.dark .form-group select option {
+  background: #3a3d52;
+  color: var(--text-primary);
+}
+
+html.dark .form-group input::placeholder {
+  color: #6b7280 !important;
+  opacity: 0.6;
+}

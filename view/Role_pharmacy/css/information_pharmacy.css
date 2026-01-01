@@ -1,0 +1,591 @@
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+
+/* ============================================
+   🧱 HEADER SECTION (Title, Buttons, Dropdown)
+   ============================================ */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon-btn,
+.lang-btn,
+.dropbtn {
+  border: none;
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 10px 14px;
+  cursor: pointer;
+  color: var(--text-primary);
+  box-shadow: 0 4px 12px rgba(148, 163, 184, 0.2);
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
+}
+
+.icon-btn:hover,
+.lang-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(148, 163, 184, 0.26);
+}
+
+
+
+/* ============================================
+   🔍 TOOLBAR (Search + Add Button)
+   ============================================ */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--card-bg);
+  padding: 18px 24px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.toolbar-left {
+  flex: 1;
+  min-width: 400px;
+  max-width: 600px;
+  position: relative;
+}
+
+.toolbar-left .fa-search {
+  position: absolute;
+  top: 50%;
+  left: 18px; /* ระยะห่างจากขอบซ้าย */
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none; /* ทำให้คลิกทะลุไอคอนไปที่ input ได้ */
+}
+
+.toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 14px 16px 14px 45px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: transparent;
+  font-size: 15px;
+  color: var(--text-primary);
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  outline: none;
+}
+#searchInput:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-light);
+  outline: none;
+}
+
+#tatFilter {
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #fff;
+  cursor: pointer;
+  color: var(--text-secondary);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background-color 0.25s ease, color 0.25s ease, opacity 0.25s ease, transform 0.2s ease;
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #fff;
+  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.35);
+}
+
+.btn.primary:hover {
+  transform: translateY(-1px);
+}
+
+.btn.outline {
+  border: 1px solid var(--primary);
+  background: transparent;
+  color: var(--primary);
+}
+
+
+.btn:hover {
+  opacity: 0.95;
+}
+
+
+/* ============================================
+   📊 STATS GRID (ส่วนที่เพิ่มใหม่)
+   ============================================ */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+}
+
+.stat-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.card-icon.icon-all { background-color: var(--icon-all-bg); color: #0284c7; }
+.card-icon.icon-pre { background-color: var(--icon-pre-bg); color: #4f46e5; }
+.card-icon.icon-analytic { background-color: var(--icon-analytic-bg); color: #9333ea; }
+.card-icon.icon-post { background-color: var(--icon-post-bg); color: #16a34a; }
+
+.card-info p {
+  margin: 0 0 4px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.card-info span {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* ============================================
+   📋 DATA TABLE (ปรับปรุงดีไซน์)
+   ============================================ */
+.data-table-container .table-wrapper {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow-x: auto;
+}
+
+.data-table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table-container thead {
+  background-color: transparent; /* 🔹 ทำให้โปร่งใส */
+}
+
+.data-table-container th,
+.data-table-container td {
+  padding: 18px 24px;
+  text-align: left;
+  font-size: 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.data-table-container th {
+  font-weight: 600;
+  text-transform: none; /* 🔹 ไม่ต้องเป็นตัวพิมพ์ใหญ่ */
+  font-size: 14px;
+  letter-spacing: normal;
+  color: var(--text-muted);
+}
+
+.data-table-container tbody tr:hover {
+  background: rgba(59, 130, 246, 0.05);
+}
+
+/* 🔹 สไตล์สำหรับแถวที่ไม่มีข้อมูล */
+.no-data-row td {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-muted);
+    background-color: #f9fafb;
+}
+
+/* ============================================
+   🎨 TAT STATUS WITH COLORED DOTS
+   ============================================ */
+.tat-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tat-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* 🟢 Green - Done (Completed) */
+.tat-dot.status-done {
+  background-color: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+}
+
+/* 🟡 Yellow - Needs 1 confirmation */
+.tat-dot.status-pending-1 {
+  background-color: #eab308;
+  box-shadow: 0 0 0 3px rgba(234, 179, 8, 0.2);
+}
+
+/* 🟠 Orange - Needs 2 confirmations */
+.tat-dot.status-pending-2 {
+  background-color: #f97316;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2);
+}
+
+/* 🔵 Blue - Pending (waiting for allele input) */
+.tat-dot.status-pending {
+  background-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* 🔴 Red - Rejected */
+.tat-dot.status-reject {
+  background-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+}
+
+/* Default/Other statuses (gray) */
+.tat-dot.status-default {
+  background-color: #9ca3af;
+  box-shadow: 0 0 0 3px rgba(156, 163, 175, 0.2);
+}
+
+.tat-status span {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+/* ============================================
+   ⚠️ TAT WARNING INDICATORS (Enhanced Visibility)
+   ============================================ */
+.tat-warning-icon,
+.tat-overdue-icon {
+  font-size: 22px;
+  margin-left: 12px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulse 1.5s ease-in-out infinite;
+  font-weight: bold;
+}
+
+/* 🟡 Warning (80-100% TAT) */
+.tat-warning-icon {
+  color: #f59e0b;
+  background-color: rgba(245, 158, 11, 0.15);
+  border: 2px solid #fbbf24;
+}
+
+/* 🔴 Overdue (>100% TAT) */
+.tat-overdue-icon {
+  color: #ef4444;
+  background-color: rgba(239, 68, 68, 0.15);
+  border: 2px solid #f87171;
+}
+
+/* Row highlighting for warnings */
+tr.tat-warning {
+  background-color: rgba(245, 158, 11, 0.1);
+  border-left: 4px solid #f59e0b;
+}
+
+tr.tat-overdue {
+  background-color: rgba(239, 68, 68, 0.12);
+  border-left: 4px solid #ef4444;
+}
+
+tr.tat-warning:hover {
+  background-color: rgba(245, 158, 11, 0.18);
+}
+
+tr.tat-overdue:hover {
+  background-color: rgba(239, 68, 68, 0.18);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+.pdf-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 20px;
+  border-radius: 10px; 
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-weight: 500;
+}
+
+.pdf-btn {
+  background: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+}
+
+.pdf-btn:hover {
+  background: #dc2626;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(220, 38, 38, 0.2);
+}
+
+.pdf-btn i {
+  font-size: 14px;
+}
+
+/* Fill Alleles Button (Blue) */
+.fill-alleles-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 20px;
+  border-radius: 10px; 
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-weight: 500;
+  background: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+}
+
+.fill-alleles-btn:hover {
+  background: #3b82f6;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(59, 130, 246, 0.2);
+}
+
+.fill-alleles-btn i {
+  font-size: 14px;
+}
+
+/* Verify Button (Green) */
+.verify-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 20px;
+  border-radius: 10px; 
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-weight: 500;
+  background: rgba(34, 197, 94, 0.1);
+  color: #22c55e;
+}
+
+.verify-btn:hover {
+  background: #22c55e;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(34, 197, 94, 0.2);
+}
+
+.verify-btn i {
+  font-size: 14px;
+}
+
+/* Reject Reason Button (Orange/Info) */
+.reject-reason-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 20px;
+  border-radius: 10px; 
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-weight: 500;
+  background: rgba(249, 115, 22, 0.1);
+  color: #f97316;
+}
+
+.reject-reason-btn:hover {
+  background: #f97316;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(249, 115, 22, 0.3);
+}
+
+.reject-reason-btn i {
+  font-size: 14px;
+}
+
+/* ====== Popup Generic ====== */
+.popup.hidden { display: none; }
+.popup {
+  position: fixed; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0.35);
+  z-index: 999;
+}
+.popup-card {
+  width: min(720px, 92vw);
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+.popup-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 20px; border-bottom: 1px solid var(--border);
+}
+.popup-body { padding: 18px 20px; }
+.popup-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 8px; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.popup input, .popup select {
+  width: 100%; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--border);
+}
+
+
+/* ============================================
+   📷 SCANNER POPUP (ดีไซน์ใหม่)
+   ============================================ */
+
+.scanner-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* ทำให้พื้นหลังมืดกว่าเดิมเล็กน้อย */
+  display: none; /* ซ่อนไว้ก่อน */
+  justify-content: center;
+  align-items: center;
+  z-index: 1001; /* ให้อยู่เหนือ popup อื่น */
+}
+
+.scanner-popup-box {
+  background: #2d3748; /* สีพื้นหลังโทนเทา-ดำ */
+  color: #f7fafc;
+  padding: 32px 40px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 420px;
+  text-align: center;
+  border: 1px solid #4a5568;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+  position: relative; /* สำคัญสำหรับ animation */
+  overflow: hidden;  /* สำคัญสำหรับ animation */
+}
+
+.scanner-popup-box h3 {
+  margin-top: 0;
+  font-size: 24px;
+  letter-spacing: 0.5px;
+}
+
+.scanner-popup-box .scanner-visual {
+  margin: 30px 0;
+  padding: 20px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.2);
+  position: relative;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scanner-popup-box .scanner-visual .fa-barcode {
+  font-size: 150px;
+  color: rgba(255, 255, 255, 0.1); /* ทำให้ไอคอนจางๆ */
+}
+
+/* --- เส้นสแกน Animation --- */
+.scanner-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #f87171; /* สีแดงสด */
+  box-shadow: 0 0 15px 2px #ef4444;
+  animation: scan 2.5s linear infinite;
+}
+
+@keyframes scan {
+  0% {
+    top: 0%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+.scanner-popup-box p {
+  color: #a0aec0;
+  margin-bottom: 30px;
+}
+
+.scanner-popup-box .close-btn {
+  background: #4a5568;
+  color: #f7fafc;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease;
+}
+
+.scanner-popup-box .close-btn:hover {
+  background: #718096;
+}
+

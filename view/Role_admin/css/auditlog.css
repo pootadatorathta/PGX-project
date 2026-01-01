@@ -1,0 +1,205 @@
+/* Audit Log specific styling (inherits variables from adminpage.css) */
+
+/* Fix for hover navbar overlap */
+body {
+	padding-top: 60px; /* Account for fixed navbar height */
+}
+
+.layout {
+	min-height: calc(100vh - 60px);
+}
+
+.filters {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(160px, 220px)) 1fr;
+	gap: 16px clamp(12px, 2vw, 20px);
+	align-items: end;
+}
+
+.filter-group {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.filter-group.grow {
+	grid-column: span 1;
+}
+
+.filter-group label {
+	font-weight: 600;
+	color: var(--color-muted);
+}
+
+.filter-group select,
+.filter-group input[type="text"] {
+	padding: 12px 14px;
+	border: 1px solid var(--color-border);
+	border-radius: 10px;
+	background: #fff;
+	color: var(--color-text);
+}
+
+/* Audit list */
+.audit-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.muted { color: var(--color-muted); }
+
+.audit-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.audit-item {
+	display: grid;
+	grid-template-columns: 44px 1fr auto; /* avatar, content, chevron */
+	align-items: center;
+	gap: 12px;
+	padding: 14px 14px;
+	border-radius: 12px;
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+	transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+	box-sizing: border-box;
+}
+
+.audit-item:hover { 
+	transform: translateY(-1px);
+	box-shadow: 0 8px 18px rgba(15,23,42,.08);
+}
+
+.avatar {
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	display: grid;
+	place-items: center;
+	font-weight: 700;
+	color: #fff;
+	user-select: none;
+}
+
+.avatar.small { width: 36px; height: 36px; font-size: .9rem; }
+
+.avatar.fallback-1 { background: linear-gradient(135deg, #6366f1, #3b82f6); }
+.avatar.fallback-2 { background: linear-gradient(135deg, #22c55e, #14b8a6); }
+.avatar.fallback-3 { background: linear-gradient(135deg, #f97316, #f43f5e); }
+.avatar.fallback-4 { background: linear-gradient(135deg, #a855f7, #06b6d4); }
+
+.audit-content { display: flex; flex-direction: column; gap: 6px; }
+.audit-line { font-weight: 600; }
+.audit-line .actor { color: var(--color-text); }
+.audit-line .target { color: var(--color-text); }
+.audit-line .action { color: var(--color-primary); font-weight: 700; }
+.audit-meta { color: var(--color-muted); font-size: .9rem; }
+
+.action-icon {
+	margin-right: 8px;
+	width: 18px; height: 18px;
+	color: var(--color-muted);
+}
+
+.chevron {
+	color: var(--color-muted);
+}
+
+.status-dot {
+	width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 6px;
+}
+.status-success { background: #10b981; }
+.status-warning { background: #f59e0b; }
+.status-danger  { background: #ef4444; }
+.status-info    { background: #3b82f6; }
+
+.empty-state {
+	display: grid;
+	place-items: center;
+	padding: 28px 12px;
+	color: var(--color-muted);
+	gap: 8px;
+}
+.empty-state i { font-size: 24px; }
+
+/* Dark mode complements */
+body.dark .filter-group select,
+body.dark .filter-group input[type="text"] {
+	background: #3b3b4a;
+	border-color: var(--color-border);
+	color: var(--color-text);
+}
+
+@media (max-width: 768px) {
+	.filters { grid-template-columns: 1fr; }
+}
+
+/* Pagination Styles */
+.pagination-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 12px;
+	padding: 20px 0 10px 0;
+	border-top: 1px solid var(--color-border);
+	margin-top: 16px;
+}
+
+.pagination-btn {
+	width: 36px;
+	height: 36px;
+	border: 1px solid var(--color-border);
+	background: var(--color-surface);
+	color: var(--color-text);
+	border-radius: 8px;
+	cursor: pointer;
+	display: grid;
+	place-items: center;
+	transition: all 0.2s ease;
+}
+
+.pagination-btn:hover:not(:disabled) {
+	background: var(--color-primary);
+	color: white;
+	border-color: var(--color-primary);
+}
+
+.pagination-btn:disabled {
+	opacity: 0.4;
+	cursor: not-allowed;
+}
+
+.page-info {
+	font-weight: 600;
+	color: var(--color-text);
+	min-width: 100px;
+	text-align: center;
+}
+
+.items-per-page {
+	padding: 8px 12px;
+	border: 1px solid var(--color-border);
+	border-radius: 8px;
+	background: var(--color-surface);
+	color: var(--color-text);
+	cursor: pointer;
+	font-weight: 500;
+}
+
+body.dark .items-per-page {
+	background: #3b3b4a;
+	border-color: var(--color-border);
+}
+
+@media (max-width: 480px) {
+	.pagination-container {
+		flex-wrap: wrap;
+		gap: 8px;
+	}
+}

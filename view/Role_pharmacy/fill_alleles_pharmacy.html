@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>กรอกข้อมูล Alleles - Pharmacy</title>
+  <script>(function(){const t=localStorage.getItem('theme-mode');t==='dark'&&document.documentElement.classList.add('dark')})();</script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="./css/fill_alleles_pharmacy.css" /> 
+  <link rel="stylesheet" href="../../view_Global/css/navbar.css">
+  <link rel="stylesheet" href="../../view_Global/css/darkmode.css" />
+  
+</head>
+<body class="step2-page">
+  <!-- Navbar -->
+  <header class="page-header">
+    <h2>Input information</h2>
+    <div class="header-buttons">
+      <button id="themeToggle" class="icon-btn">
+        <i class="fa fa-moon"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Step progress -->
+  <section class="steps ">
+    <div class="step active">1</div>
+    <div class="line"></div>
+    <div class="step ">2</div>
+  </section>
+
+  <!-- Content -->
+  <main class="container">
+    <h3>รายละเอียดการตรวจ DNA</h3>
+
+    <div class="dna-box">
+      <div class="info">
+        <p><strong>ชื่อผู้ป่วย:</strong> <span id="patientName">-</span></p>
+        <p><strong>DNA Type:</strong> <span id="dnaType">-</span></p>
+        <p id="possibleCombinations" style="color: #666; font-size: 0.9em; margin-top: 5px;">
+          <i class="fa fa-info-circle"></i> <span id="combCount">-</span>
+        </p>
+      </div>
+      <hr />
+
+      <!-- พื้นที่สร้าง dropdown อัตโนมัติ -->
+      <div class="select-area" id="selectArea"></div>
+    </div>
+
+    <div class="btn-area">
+      <button class="back-btn">← Back</button>
+      <button class="confirm-btn">Confirm →</button>
+    </div>
+  </main>
+
+  <script src="./js/fill_alleles_pharmacy.js"></script>
+  <script src="../../view_Global/js/darkmode.js"></script>
+</body>
+</html>

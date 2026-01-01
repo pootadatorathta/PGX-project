@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>ยืนยันข้อมูล Alleles - Pharmacy</title>
+  <script>(function(){const t=localStorage.getItem('theme-mode');t==='dark'&&document.documentElement.classList.add('dark')})();</script>
+  <link rel="stylesheet" href="./css/confirm_alleles_pharmacy.css" />
+  <link rel="stylesheet" href="../../view_Global/css/navbar.css">
+  <link rel="stylesheet" href="../../view_Global/css/darkmode.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
+<body class="step3-page">
+  <!-- Header -->
+  <header class="page-header">
+    <h2>Input information</h2>
+    <div class="header-buttons">
+      <button id="themeToggle" class="icon-btn">
+        <i class="fa fa-moon"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Step progress -->
+  <section class="steps">
+    <div class="step done">1</div>
+    <div class="line"></div>
+    <div class="step active">2</div>
+  </section>
+
+  <!-- Content -->
+  <main class="container step3-container">
+    <h3>สรุปผลการตรวจ DNA</h3>
+
+    <div class="summary-box">
+      <p><strong>ชื่อผู้ป่วย:</strong> <span id="patientName">-</span></p>
+      <p><strong>DNA Type:</strong> <span id="dnaType">-</span></p>
+
+      <table class="result-table" id="alleleTable">
+        <thead>
+          <tr id="alleleHeader"></tr>
+        </thead>
+        <tbody>
+          <tr id="alleleValues"></tr>
+        </tbody>
+      </table>
+
+      <p><strong>Genotype:</strong> <span id="genotype">-</span></p>
+      <p><strong>Total activity score:</strong> <span id="activityScore">N/A</span></p>
+      
+      <p><strong>Genotype Summary:</strong></p>
+      <p id="genotypeSummary" style="margin-left: 20px; ">-</p>
+      
+      <p><strong><span id="phenotypeLabel">Likely Phenotype</span>:</strong> 
+         <span id="phenotype">-</span></p>
+      
+      <p><strong>Therapeutic recommendation:</strong></p>
+      <p id="recommendation" style="margin-left: 20px; ">-</p>
+    </div>
+
+    <div class="btn-area">
+      <button class="back-btn">← Back</button>
+      <button class="confirm-btn">Confirm →</button>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="../../view_Global/js/userProfile.js"></script>
+  <script src="./js/confirm_alleles_pharmacy.js"></script>
+  <script src="../../view_Global/js/darkmode.js"></script>
+</body>
+</html>

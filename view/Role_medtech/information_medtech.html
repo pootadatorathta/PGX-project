@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Management</title>
+  <script>(function(){const t=localStorage.getItem('theme-mode');t==='dark'&&document.documentElement.classList.add('dark')})();</script>
+
+  <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="../../view_Global/css/global.css"> 
+  <link rel="stylesheet" href="./css/information_medtech.css" />
+  <link rel="stylesheet" href="../../view_Global/css/menu.css">
+  <link rel="stylesheet" href="../../view_Global/css/navbar.css">
+  <link rel="stylesheet" href="../../view_Global/css/navbar_hover.css">
+  <link rel="stylesheet" href="../../view_Global/css/darkmode.css">
+
+
+</head>
+<body>
+
+  <!-- แถบ Navbar -->
+  <div class="hover-navbar">
+    <div class="navbar-content">
+      <div class="navbar-left">
+        <img src="../../view_Global/png/pgx-logo.png" alt="PGX Logo" class="logo" style="height: 35px;">
+      </div>
+      <div class="navbar-right">
+        <button class="nav-btn close"><i class="fa fa-xmark"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <img src="../../view_Global/png/pgx-logo.png" alt="PGX Logo" class="logo" style="width: 80px; margin: 15px auto 25px; display: block;">
+      <ul>
+        <li id="dashboard-btn-medtech" >Dashboard</li>
+        <li id="patient-btn-medtech" >ข้อมูลผู้ป่วย</li>
+        <li id="information-btn-medtech" class="active">ตรวจสอบข้อมูล</li>
+        <li id="state-btn-medtech">ติดตามสถานะ</li>
+      </ul>
+    </aside>
+    <!-- Main -->
+    <main class="main-content">
+      <!-- Header -->
+      <header class="page-header">
+        <h2>Case Management</h2>
+        <div class="header-actions">
+          <button id="themeToggle" class="icon-btn"><i class="fa fa-moon"></i></button>
+          <button id="langToggle" class="lang-btn">TH</button>
+
+          <div class="dropdown">
+            <button class="dropbtn" id="dropdownBtn">
+              <i class="fa fa-user-circle"></i> Admin <i class="fa fa-caret-down"></i>
+            </button>
+            <div id="dropdownMenu" class="dropdown-content">
+              <a href="#" id="profile-link" class="dropdown-item">Profile</a>
+              <a href="#" class="dropdown-item">About</a>
+              <a href="#" id="logout" class="dropdown-item">Logout</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Toolbar -->
+
+      <div class="toolbar">
+        <div class="toolbar-left">
+          <input type="text" id="searchInput" placeholder="ค้นหาด้วยเคสเลขที่">
+          <i class="fa fa-search"></i>
+        </div>
+          
+        <div class="toolbar-right">
+          <select id="tatFilter">
+            <option value="all">All status</option>
+            <option value="need 2 confirmation">Need 2 confirmation</option>
+            <option value="need 1 confirmation">Need 1 confirmation</option>
+            <option value="done">Done</option>
+            <option value="reject">Reject</option>
+          </select>
+          <button id="scanBarcodeBtn" class="btn primary">
+            <i class="fa fa-barcode"></i>
+            สแกนบาร์โค้ด
+          </button>
+          
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <section class="stats-grid">
+        <div class="stat-card">
+          <div class="card-icon icon-all"><i class="fa fa-users"></i></div>
+          <div class="card-info"><p>All Case</p><span id="statAll">0</span></div>
+        </div>
+        <div class="stat-card">
+          <div class="card-icon icon-pending"><i class="fa fa-clock"></i></div>
+          <div class="card-info"><p>Pending</p><span id="statPending">0</span></div>
+        </div>
+        <div class="stat-card">
+          <div class="card-icon icon-pre"><i class="fa fa-hourglass-half"></i></div>
+          <div class="card-info"><p>Need 2 confirmation</p><span id="statPre">0</span></div>
+        </div>
+        <div class="stat-card">
+          <div class="card-icon icon-analytic"><i class="fa fa-hourglass-end"></i></div>
+          <div class="card-info"><p>Need 1 confirmation</p><span id="statAnalytic">0</span></div>
+        </div>
+        <div class="stat-card">
+          <div class="card-icon icon-post"><i class="fa fa-check-circle"></i></div>
+          <div class="card-info"><p>Done</p><span id="statPost">0</span></div>
+        </div>
+        <div class="stat-card">
+          <div class="card-icon icon-reject"><i class="fa fa-times-circle"></i></div>
+          <div class="card-info"><p>Reject</p><span id="statReject">0</span></div>
+        </div>
+      </section>
+
+      <!-- Table -->
+      <section class="data-table-container">
+        <div class="table-wrapper">
+          <table id="patientTable">
+            <thead>
+              <tr>
+                <th>เคสเลขที่ </th>
+                <th>Hospital Name</th>
+                <th>ชื่อ - นามสกุล </th> 
+                <th>การวินิจฉัย</th>
+                <th>วันที่รับสิ่งส่งตรวจ</th>
+                <th>ส่งตรวจ</th>
+                <th>สถานะ</th>
+                <th>การจัดการ</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Barcode Scanner Overlay -->
+  <div class="scanner-overlay" id="scannerOverlay">
+    <div class="scanner-popup-box">
+      <h3>Scan Barcode</h3>
+      <div class="scanner-visual">
+        <i class="fa fa-barcode"></i>
+        <div class="scanner-line"></div>
+      </div>
+      <p>กรุณาวางบาร์โค้ดให้อยู่ในระยะของกล้อง</p>
+      <button type="button" id="closeScannerBtn" class="close-btn">
+        ปิด
+      </button>
+    </div>
+  </div>
+  
+
+  <!-- Settings Popup -->
+  <div id="settingsPopup" class="popup" style="display: none;">
+    <div class="popup-content">
+      <div class="popup-header">
+        <h3>Settings</h3>
+        <span class="close" id="closeSettings">&times;</span>
+      </div>
+      <div class="popup-body">
+        <div class="setting-item">
+          <label>Language:</label>
+          <select id="languageSetting">
+            <option value="th">ไทย (Thai)</option>
+            <option value="en">English</option>
+          </select>
+        </div>
+        <div class="setting-item">
+          <label>Theme:</label>
+          <select id="themeSetting">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+          </select>
+        </div>
+        <div class="setting-item">
+          <label>Notifications:</label>
+          <input type="checkbox" id="notificationsSetting" checked>
+        </div>
+      </div>
+      <div class="popup-footer">
+        <button class="btn-primary" id="saveSettings">Save</button>
+        <button class="btn-secondary" id="cancelSettings">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+  <script src="../../view_Global/js/userProfile.js"></script>
+  <script src="../../view_Global/js/darkmode.js"></script>
+  <script src="./js/information_medtech.js"></script>
+  <script src="../../view_Global/js/menu.js"></script>
+  <script src="../../view_Global/js/navbar_hover.js"></script>
+
+</body>
+</html>

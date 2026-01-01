@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Management</title>
+    <script>(function(){const t=localStorage.getItem('theme-mode');t==='dark'&&document.documentElement.classList.add('dark')})();</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <link rel="stylesheet" href="../../view_Global/css/global.css"> 
+    <link rel="stylesheet" href="../../view_Global/css/menu.css">
+    <link rel="stylesheet" href="../../view_Global/css/navbar.css">
+    <link rel="stylesheet" href="../../view_Global/css/navbar_hover.css">
+    
+    <link rel="stylesheet" href="./css/information_pharmacy.css"> 
+    <link rel="stylesheet" href="./css/verify_pharmacy.css" />
+    <link rel="stylesheet" href="../../view_Global/css/darkmode.css">
+</head>
+<body>
+    <div class="hover-navbar">
+        <div class="navbar-content">
+        <div class="navbar-left">
+            <img src="../../view_Global/png/pgx-logo.png" alt="PGX Logo" class="logo" style="height: 35px;">
+        </div>
+        <div class="navbar-right">
+            <button class="nav-btn close"><i class="fa fa-xmark"></i></button>
+        </div>
+        </div>
+    </div>
+
+    <header class="page-header">
+        <h2>Case Management</h2>
+        <div class="header-actions">
+          <button id="themeToggle" class="icon-btn"><i class="fa fa-moon"></i></button>
+          <button id="langToggle" class="lang-btn">TH</button>
+
+          <div class="dropdown">
+            <button class="dropbtn" id="dropdownBtn">
+              <i class="fa fa-user-circle"></i> Admin <i class="fa fa-caret-down"></i>
+            </button>
+            <div id="dropdownMenu" class="dropdown-content">
+              <a href="#" id="profile-link" class="dropdown-item">Profile</a>
+              <a href="#" class="dropdown-item">About</a>
+              <a href="#" id="logout" class="dropdown-item">Logout</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+    <main class="container">
+
+        <section class="card document-viewer">
+            <div class="card-header">
+                <h2>รายละเอียดเอกสาร</h2>
+                <a href="#" class="upload-link">อัปโหลด...</a>
+            </div>
+            
+            <div class="document-body">
+                
+                <div id="viLoader" class="vi-loader">
+                    <div class="vi-loader__spinner"></div>
+                    <p>กำลังดึงไฟล์ PDF จากระบบ...</p>
+                </div>
+
+                <div id="pdfjsViewer" class="pdf-viewer-shell" hidden>
+                    <div class="vi-toolbar">
+                        <div class="vi-toolbar__group">
+                             <button id="btnPrevPage" type="button" class="vi-icon-btn" aria-label="หน้าก่อนหน้า"><i class="fa fa-chevron-left"></i></button>
+                            <div class="vi-page-indicator">
+                                หน้า <span id="pageNum">1</span> / <span id="pageCount">1</span>
+                            </div>
+                            <button id="btnNextPage" type="button" class="vi-icon-btn" aria-label="หน้าถัดไป"><i class="fa fa-chevron-right"></i></button>
+                        </div>
+                        <div class="vi-toolbar__group">
+                            <button id="btnDownload" type="button" class="vi-btn vi-btn-ghost">ดาวน์โหลด</button>
+                            <a id="openExternal" class="vi-btn vi-btn-secondary" target="_blank" rel="noopener noreferrer">เปิดแท็บใหม่</a>
+                        </div>
+                    </div>
+                    <div class="vi-canvas-shell">
+                        <canvas id="pdfCanvas"></canvas>
+                    </div>
+                </div>
+
+                <iframe id="pdfViewer" class="pdf-viewer-shell" title="PDF Viewer" src="" hidden></iframe>
+                
+                <div id="pdfFallback" class="vi-fallback" hidden>
+                    <i class="fa fa-triangle-exclamation vi-fallback__icon"></i>
+                    <h3>ไม่สามารถแสดงไฟล์ PDF ได้</h3>
+                    <p>กรุณาตรวจสอบไฟล์อีกครั้ง</p>
+                    <button id="btnReload" type="button" class="vi-btn vi-btn-secondary">ลองอีกครั้ง</button>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="card verification-panel">
+            <h2>ตรวจสอบเอกสาร</h2>
+            <p class="subtitle">เจ้าหน้าที่ 1 / 2 กำลังตรวจสอบไฟล์ PDF</p>
+
+            <div class="stepper-container">
+                <h3>สถานะความคืบหน้า</h3>
+                <div class="stepper">
+                    <div class="step active">1</div>
+                    <div class="step">2</div>
+                </div>
+                <p class="stepper-status">รอการยืนยันจากอีก 1 คน</p>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-back" id="btnBack"><i class="fa fa-arrow-left"></i> ย้อนกลับ</button>
+                <button class="btn btn-reject" id="btnReject">✘ ปฏิเสธ</button>
+                <button class="btn btn-confirm" id="btnConfirm" disabled>✔ ยืนยันว่าถูกต้อง</button>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <script src="../../view_Global/js/userProfile.js"></script>
+    <script src="../../view_Global/js/darkmode.js"></script>
+    <script src="../../view_Global/js/menu.js"></script>
+    <script src="../../view_Global/js/navbar_hover.js"></script>
+    
+    <script src="./js/verify_pharmacy.js"></script>
+
+</body>
+</html>

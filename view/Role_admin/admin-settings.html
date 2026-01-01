@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Settings</title>
+  <script>(function(){const t=localStorage.getItem('theme-mode');t==='dark'&&document.documentElement.classList.add('dark')})();</script>
+  <link rel="stylesheet" href="./css/admin-settings.css" />
+  <link rel="stylesheet" href="../../view_Global/css/navbar.css">
+	<link rel="stylesheet" href="../../view_Global/css/menu.css">
+  <link rel="stylesheet" href="../../view_Global/css/navbar_hover.css">
+  <link rel="stylesheet" href="../../view_Global/css/global.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../../view_Global/css/darkmode.css" />
+</head>
+<body>
+
+  <!-- แถบ Navbar -->
+  <div class="hover-navbar">
+    <div class="navbar-content">
+      <div class="navbar-left">
+        <img src="../../view_Global/png/pgx-logo.png" alt="PGX Logo" class="logo" style="height: 35px;">
+      </div>
+      <div class="navbar-right">
+        <button class="nav-btn close"><i class="fa fa-xmark"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="app-shell">
+    <aside class="sidebar">
+      <img src="../../view_Global/png/pgx-logo.png" alt="PGX Logo" class="logo" style="width: 80px; margin: 15px auto 25px; display: block;">
+      <ul>
+        <li id="admin-btn">Employee</li>
+        <li id="auditlog-btn">Audit Log</li>
+        <li id="admin_settings-btn" class="active">Settings</li>
+      </ul>
+    </aside>
+
+    <main class="content">
+      <header class="page-header">
+        <div class="page-title">
+          <h1>Admin Settings</h1>
+          <p>จัดการหมวดหมู่ สิ่งส่งตรวจ และกำหนดค่า TAT ภายในระบบ</p>
+        </div>
+        <div class="header-buttons">
+          <button id="themeToggle" class="icon-btn" title="เปลี่ยนธีม">
+            <i class="fa fa-moon"></i>
+          </button>
+          <button id="langToggle" class="lang-btn" title="สลับภาษา">TH</button>
+          <div class="dropdown">
+            <button class="dropbtn" id="dropdownBtn">
+              <i class="fa fa-user-circle"></i>
+              Admin
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div id="dropdownMenu" class="dropdown-content">
+              <a href="#" id="profile-link" class="dropdown-item">Profile</a>
+              <a href="#" class="dropdown-item">About</a>
+              <a href="#" id="logout" class="dropdown-item">Logout</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section class="specimen-layout">
+        <section class="card specimen-form-card">
+          <div class="form-header">
+            <h2>จัดการข้อมูลสิ่งส่งตรวจ</h2>
+            <div id="form-message" class="form-message" role="alert"></div>
+          </div>
+
+          <form id="specimenForm" class="inline-form">
+            <input id="specimenName" name="name" type="text" placeholder="ชื่อสิ่งส่งตรวจ (เช่น Blood)" required />
+            <input id="specimenTat" name="tat" type="number" min="0" placeholder="TAT (วัน)" required />
+            <div class="form-actions-inline">
+              <button type="submit" class="btn primary" id="submitBtn">
+                <i class="fa fa-plus"></i> เพิ่ม
+              </button>
+              <button type="button" id="cancelBtn" class="btn secondary" style="display: none;">
+                <i class="fa fa-times"></i> ยกเลิก
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <section class="specimen-table-panel">
+          <header class="card specimen-table-header">
+            <div>
+              <h2>รายการสิ่งส่งตรวจ</h2>
+              <p>ตรวจสอบและแก้ไขรายการที่สร้างไว้ทั้งหมด</p>
+            </div>
+          </header>
+          <div class="card specimen-table-card">
+            <div class="scrollable-table-wrapper">
+              <table id="specimen-table" class="specimen-table">
+                <thead>
+                  <tr>
+                    <th>ชื่อสิ่งส่งตรวจ</th>
+                    <th style="width: 110px; text-align: center;">TAT (วัน)</th>
+                    <th style="width: 120px; text-align: center;">จัดการ</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </section>
+
+
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+  <script src="./js/admin-settings.js"></script>
+  <script src="../../view_Global/js/userProfile.js"></script>
+  <script src="../../view_Global/js/darkmode.js"></script>
+  <script src="../../view_Global/js/menu.js"></script>
+  <script src="../../view_Global/js/navbar_hover.js"></script>
+</body>
+</html>

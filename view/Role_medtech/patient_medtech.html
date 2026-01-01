@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patient Dashboard</title>
+  <script>(function(){const t=localStorage.getItem('theme-mode');t==='dark'&&document.documentElement.classList.add('dark')})();</script>
+
+  <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+  <!-- CSS -->
+  <link rel="stylesheet" href="../../view_Global/css/global.css"> 
+  <link rel="stylesheet" href="./css/patient_medtech.css" />
+  <link rel="stylesheet" href="../../view_Global/css/menu.css">
+  <link rel="stylesheet" href="../../view_Global/css/navbar.css">
+  <link rel="stylesheet" href="../../view_Global/css/navbar_hover.css">
+  <link rel="stylesheet" href="../../view_Global/css/darkmode.css">
+  <!-- Font Awesome -->
+  
+</head>
+<body>
+
+  <!-- แถบ Navbar -->
+  <div class="hover-navbar">
+    <div class="navbar-content">
+      <div class="navbar-left">
+        <img src="../../view_Global/png/pgx-logo.png" alt="PGX Logo" class="logo" style="height: 35px;">
+      </div>
+      <div class="navbar-right">
+        <button class="nav-btn close"><i class="fa fa-xmark"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Container หลัก -->
+  <div class="container">
+    
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <img src="../../view_Global/png/pgx-logo.png" alt="PGX Logo" class="logo" style="width: 80px; margin: 15px auto 25px; display: block;">
+      <ul>
+        <li id="dashboard-btn-medtech" >Dashboard</li>
+        <li id="patient-btn-medtech" class="active">ข้อมูลผู้ป่วย</li>
+        <!--li id="information-btn-medtech">ตรวจสอบข้อมูล</li-->
+        <li id="state-btn-medtech">ติดตามสถานะ</li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      
+      <!-- Header Section -->
+      <header class="page-header">
+        <h2>Information</h2>
+        <div class="header-buttons">
+          <button id="themeToggle" class="icon-btn">
+            <i class="fa fa-moon"></i>
+          </button>
+          <button id="langToggle" class="lang-btn">TH</button>
+
+          <!-- Dropdown -->
+          <div class="dropdown">
+            <button class="dropbtn" id="dropdownBtn">
+              <i class="fa fa-user-circle"></i> Admin <i class="fa fa-caret-down"></i>
+            </button>
+            <div id="dropdownMenu" class="dropdown-content">
+              <a href="#" id="profile-link" class="dropdown-item">Profile</a>
+              <a href="#" class="dropdown-item">About</a>
+              <a href="#" id="logout" class="dropdown-item">Logout</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Toolbar -->
+      <div class="toolbar">
+        <div class="toolbar-left">
+          <input type="text" id="searchInput" placeholder="ค้นหาด้วยรหัสผู้ป่วย" />
+          <i class="fa fa-search"></i>
+        </div>
+          
+        <div class="toolbar-right">
+          <button id="scanBarcodeBtn" class="btn primary">
+            <i class="fa fa-barcode"></i>
+            สแกนบาร์โค้ด
+          </button>
+          <button id="addBtn" class="btn primary">
+            <i class="fa fa-plus"></i>
+            เพิ่มข้อมูลผู้ป่วย
+          </button>
+        </div>
+      </div>
+
+     
+
+      <!-- Table Section -->
+      <section class="case-table">
+        <div class="table-wrapper">
+          <table id="patientTable">
+            <thead>
+              <tr>
+                <th>เลขประจำตัวผู้ป่วย</th>
+                <th>ชื่อ</th>
+                <th>วันที่ส่งตรวจ</th>
+                <th>โรงพยาบาล</th>
+                <th>จัดการข้อมูล</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Popup: Add Patient -->
+  <div class="popup-overlay" id="popupAdd">
+    <div class="popup-box large-form">
+      <h3>เพิ่มข้อมูลผู้ป่วย</h3>
+
+      <form id="addForm">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>เลขประจำตัวผู้ป่วย:</label>
+            <input type="number" id="patient_id" required />
+            <small id="patient_id_validation" style="display: none; margin-top: 4px; font-size: 12px;"></small>
+          </div>
+
+          <div class="form-group">
+            <label>ชื่อ:</label>
+            <input type="text" id="first_name" required />
+          </div>
+
+          <div class="form-group">
+            <label>นามสกุล:</label>
+            <input type="text" id="last_name" required />
+          </div>
+
+          <div class="form-group">
+            <label>อายุ:</label>
+            <input type="number" id="age" required />
+          </div>
+
+          <div class="form-group">
+            <label>เพศ:</label>
+            <select id="gender" required>
+              <option value="">--เลือก--</option>
+              <option value="ชาย">ชาย</option>
+              <option value="หญิง">หญิง</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>เชื้อชาติ:</label>
+            <input type="text" id="ethnicity" />
+          </div>
+
+          <div class="form-group">
+            <label>กรุ๊ปเลือด:</label>
+            <select id="blood_type">
+              <option>--เลือก--</option>
+              <option value="A">A</option>
+              <option value="A+">A+</option>
+              <option value="A-">A-</option>
+              <option value="B">B</option>
+              <option value="B+">B+</option>
+              <option value="B-">B-</option>
+              <option value="AB">AB</option>
+              <option value="AB+">AB+</option>
+              <option value="AB-">AB-</option>
+              <option value="O">O</option>
+              <option value="O+">O+</option>
+              <option value="O-">O-</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>โรงพยาบาล:</label>
+            <select id="hospital" required>
+              <option value="">--เลือกโรงพยาบาล--</option>
+              <option value="รพ.กรุงเทพ">รพ.กรุงเทพ</option>
+              <option value="รพ.ศิริราช">รพ.ศิริราช</option>
+              <option value="รพ.จุฬา">รพ.จุฬา</option>
+              <option value="รพ.รามาธิบดี">รพ.รามาธิบดี</option>
+              <option value="รพ.พระมงกุฏเกล้า">รพ.พระมงกุฏเกล้า</option>
+              <option value="รพ.ศรีนครินทร์">รพ.ศรีนครินทร์</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>เบอร์โทร:</label>
+            <input type="tel" id="phone" />
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="save-btn" id="savePatientBtn">
+            <i class="fa fa-save"></i> บันทึก
+          </button>
+          <button type="button" id="closeAdd" class="cancel-btn">ยกเลิก</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <div class="scanner-overlay" id="scannerOverlay">
+    <div class="scanner-popup-box">
+      <h3>Scan Barcode</h3>
+      <div class="scanner-visual">
+        <i class="fa fa-barcode"></i>
+        <div class="scanner-line"></div>
+      </div>
+      <p>กรุณาวางบาร์โค้ดให้อยู่ในระยะของกล้อง</p>
+      <button type="button" id="closeScannerBtn" class="close-btn">
+        ปิด
+      </button>
+    </div>
+  </div>
+
+  <!-- Settings Popup -->
+  <div id="settingsPopup" class="popup" style="display: none;">
+    <div class="popup-content">
+      <div class="popup-header">
+        <h3>Settings</h3>
+        <span class="close" id="closeSettings">&times;</span>
+      </div>
+      <div class="popup-body">
+        <div class="setting-item">
+          <label>Language:</label>
+          <select id="languageSetting">
+            <option value="th">ไทย (Thai)</option>
+            <option value="en">English</option>
+          </select>
+        </div>
+        <div class="setting-item">
+          <label>Theme:</label>
+          <select id="themeSetting">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+          </select>
+        </div>
+        <div class="setting-item">
+          <label>Notifications:</label>
+          <input type="checkbox" id="notificationsSetting" checked>
+        </div>
+      </div>
+      <div class="popup-footer">
+        <button class="btn-primary" id="saveSettings">Save</button>
+        <button class="btn-secondary" id="cancelSettings">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+  <script src="../../view_Global/js/userProfile.js"></script>
+  <script src="../../view_Global/js/darkmode.js"></script>
+  <script src="./js/patient_medtech.js"></script>
+  <script src="../../view_Global/js/menu.js"></script>
+  <script src="../../view_Global/js/navbar_hover.js"></script>
+
+</body>
+</html>

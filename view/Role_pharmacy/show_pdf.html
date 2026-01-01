@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Management</title>
+    <script>(function(){const t=localStorage.getItem('theme-mode');t==='dark'&&document.documentElement.classList.add('dark')})();</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    
+    <link rel="stylesheet" href="../../view_Global/css/global.css"> 
+    <link rel="stylesheet" href="../../view_Global/css/darkmode.css">
+    
+    <link rel="stylesheet" href="./css/show_pdf_viewer.css" />
+</head>
+<body class="pdf-dark-bg">
+  <div class="pdf-shell">
+    <header class="pdf-top-bar">
+      <button id="back-to-information" class="pdf-icon-btn" aria-label="Back">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+      <div class="pdf-top-dots">
+        <span></span><span></span><span></span>
+      </div>
+      <div class="pdf-top-actions">
+        <button id="themeToggle" class="pdf-icon-btn" aria-label="Toggle theme">
+          <i class="fa fa-moon"></i>
+        </button>
+      </div>
+    </header>
+
+    <main class="pdf-stage">
+      <section class="pdf-window">
+        <div class="pdf-toolbar">
+          <div class="pdf-toolbar-left">
+            <span class="pdf-dot red"></span>
+            <span class="pdf-dot yellow"></span>
+            <span class="pdf-dot green"></span>
+          </div>
+          <h1 class="pdf-window-title">เอกสารผลตรวจ</h1>
+          <a id="downloadPdf" class="pdf-download" href="#" download>
+            <i class="fas fa-cloud-download-alt"></i>
+          </a>
+        </div>
+
+        <div class="pdf-frame-wrap">
+          <iframe id="pdfFrame" src="" title="PDF Preview" loading="lazy"></iframe>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+  <script src="../../view_Global/js/darkmode.js"></script>
+  <script src="./js/show_pdf.js"></script>
+  <script>
+    document.getElementById('back-to-information')?.addEventListener('click', () => {
+      window.electronAPI.navigate('information_pharmacy');
+    });
+  </script>
+</body>
+</html>

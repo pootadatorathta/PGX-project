@@ -1,0 +1,199 @@
+/* ===== GLOBAL ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #f7f8fa;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== Layout ===== */
+.login-container {
+  width: 950px;
+  height: 560px;
+  display: flex;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+/* ===== Left Panel ===== */
+.left-panel {
+  width: 45%;
+  background: linear-gradient(180deg, #efefef, #fafafa);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 50px 30px;
+}
+
+.left-logo {
+  width: 100px;
+  margin-bottom: 30px;
+}
+
+.left-panel h1 {
+  font-size: 32px;
+  color: #111;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.left-panel p {
+  color: #555;
+  font-size: 15px;
+}
+
+/* ===== Right Panel ===== */
+.right-panel {
+  width: 55%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px 60px;
+  position: relative;
+}
+
+/* ===== Language Toggle ===== */
+.language-toggle {
+  position: absolute;
+  top: 25px;
+  right: 30px;
+}
+
+.language-toggle button {
+  border: 1px solid #ccc;
+  background: #fff;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  padding: 5px 12px;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+.language-toggle button.active {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+
+.language-toggle button:hover {
+  background: #f0f0f0;
+}
+
+/* ===== Login Form ===== */
+.login-box {
+  width: 100%;
+  max-width: 340px;
+  margin: 0 auto;
+}
+
+.login-box h2 {
+  color: #111;
+  font-weight: 600;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.login-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.login-box label {
+  font-size: 14px;
+  color: #1c1c1e;
+  font-weight: 500;
+}
+
+.login-box input {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #dcdcdc;
+  outline: none;
+  font-size: 14px;
+  color: #1c1c1e;
+  background: #fff;
+  transition: 0.3s;
+}
+
+.login-box input:focus {
+  border-color: #000;
+  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+}
+
+/* ===== Button ===== */
+.login-box button {
+  background: linear-gradient(90deg, #000, #333);
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  margin-top: 10px;
+  transition: 0.3s ease;
+}
+
+.login-box button:hover {
+  background: linear-gradient(90deg, #222, #555);
+  transform: scale(1.02);
+}
+
+
+.hidden {
+  display: none;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  #popup {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    min-width: auto;
+    max-width: none;
+    transform: translateY(-100px);
+  }
+  
+  #popup.show {
+    transform: translateY(0);
+  }
+  
+  .login-container {
+    flex-direction: column;
+    height: auto;
+    width: 90%;
+  }
+  .left-panel, .right-panel {
+    width: 100%;
+    padding: 30px;
+  }
+}
+
+
+/* Custom Notyf Styles */
+    .notyf__toast {
+      padding: 16px 24px; /* เพิ่ม padding (เดิม 12px 20px) */
+      font-size: 15px;    /* เพิ่มขนาด font (เดิม 14px) */
+      border-radius: 8px; /* ทำให้ขอบมนเข้ากับธีม */
+    }
+    
+    .notyf__icon i {
+      font-size: 22px;    /* เพิ่มขนาด icon (เดิม 18px) */
+      margin-right: 12px; /* เพิ่มระยะห่าง icon */
+    }

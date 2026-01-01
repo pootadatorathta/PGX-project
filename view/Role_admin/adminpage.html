@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Page</title>
+  <script>(function(){const t=localStorage.getItem('theme-mode');t==='dark'&&document.documentElement.classList.add('dark')})();</script>
+  <link rel="stylesheet" href="./css/adminpage.css" />
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../../view_Global/css/navbar.css">
+	<link rel="stylesheet" href="../../view_Global/css/menu.css">
+  <link rel="stylesheet" href="../../view_Global/css/navbar_hover.css">
+  <link rel="stylesheet" href="../../view_Global/css/global.css">
+  <link rel="stylesheet" href="../../view_Global/css/darkmode.css" />
+</head>
+<body>
+
+  <!-- แถบ Navbar -->
+  <div class="hover-navbar">
+    <div class="navbar-content">
+      <div class="navbar-left">
+        <img src="../../view_Global/png/pgx-logo.png" alt="PGX Logo" class="logo" style="height: 35px;">
+      </div>
+      <div class="navbar-right">
+        <button class="nav-btn close"><i class="fa fa-xmark"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="layout">
+    <aside class="sidebar">
+      		<img src="../../view_Global/png/pgx-logo.png" alt="PGX Logo" class="logo" style="width: 80px; margin: 15px auto 25px; display: block;">
+			<ul>
+				<li id="admin-btn" class="active">Employee</li>
+				<li id="auditlog-btn" >Audit Log</li>
+        <li id="admin_settings-btn">Settings</li>
+			</ul>
+    </aside>
+
+    <!-- ...existing code... -->
+    <main class="main-content">
+      <header class="page-header">
+        <div class="page-title">
+          <h1>Employee</h1>
+          <p>Add & Edit All Employees</p>
+        </div>
+        <div class="header-buttons">
+          <button id="themeToggle" class="icon-btn">
+            <i class="fa fa-moon"></i>
+          </button>
+          <button id="langToggle" class="lang-btn">TH</button>
+
+          <!-- Dropdown -->
+          <div class="dropdown">
+            <button class="dropbtn" id="dropdownBtn">
+              <i class="fa fa-user-circle"></i> Admin <i class="fa fa-caret-down"></i>
+            </button>
+            <div id="dropdownMenu" class="dropdown-content">
+              <a href="#" id="profile-link" class="dropdown-item">Profile</a>
+              <a href="#" class="dropdown-item">About</a>
+              <a href="#" id="logout" class="dropdown-item">Logout</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section class="card">
+        <h2>เพิ่มผู้ใช้งาน</h2>
+        <form id="user-form" class="form-grid">
+          <div class="form-field">
+            <label for="username">Username</label>
+            <input id="username" name="username" type="text" required />
+          </div>
+          <div class="form-field">
+            <label for="password">Password</label>
+            <div class="input-with-button">
+              <input id="password" name="password" type="password" required />
+              <button type="button"
+                      class="toggle-password"
+                      data-target="password"
+                      aria-label="แสดงรหัสผ่าน">
+                <svg class="icon icon-eye-open" viewBox="0 0 24 24" fill="none">
+                  <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"
+                        stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/>
+                </svg>
+                <svg class="icon icon-eye-off" viewBox="0 0 24 24" fill="none">
+                  <path d="M3.98 5.51A17.92 17.92 0 0112 5c7 0 11 7 11 7a17.92 17.92 0 01-4.33 5.19"
+                        stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M9.53 9.53A3 3 0 0014.47 14.47" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M2 2l20 20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="hospitalId">Hospital ID</label>
+            <input id="hospitalId" name="hospital_id" type="text" required />
+          </div>
+          <div class="form-field">
+            <label for="role">Role</label>
+            <select id="role" name="role" required>
+              <option value="">เลือกบทบาท</option>
+              <option value="pharmacist">Pharmacist</option>
+              <option value="medtech">MedTech</option>
+            </select>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn primary">เพิ่มผู้ใช้งาน</button>
+          </div>
+        </form>
+        <div id="form-message" class="form-message" role="alert"></div>
+      </section>
+
+      <section class="card">
+        <h2>รายชื่อผู้ใช้งาน</h2>
+        <div class="table-wrapper">
+          <table id="user-table">
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Hospital ID</th>
+                <th>Role</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- จะถูกเติมโดยสคริปต์ -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <!-- Edit User Modal -->
+    <div id="editModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>แก้ไขข้อมูลผู้ใช้งาน</h3>
+          <span class="close" id="closeModal">&times;</span>
+        </div>
+        <form id="edit-user-form" class="modal-body">
+          <input type="hidden" id="edit-user-id">
+          
+          <div class="form-field">
+            <label for="edit-username">Username</label>
+            <input id="edit-username" type="text" disabled />
+          </div>
+          
+          <div class="form-field">
+            <label for="edit-password">Password ใหม่ (ไม่ต้องกรอกถ้าไม่ต้องการเปลี่ยน)</label>
+            <div class="input-with-button">
+              <input id="edit-password" type="password" placeholder="ไม่ต้องกรอกถ้าไม่ต้องการเปลี่ยน" />
+              <button type="button"
+                      class="toggle-password"
+                      data-target="edit-password"
+                      aria-label="แสดงรหัสผ่าน">
+                <svg class="icon icon-eye-open" viewBox="0 0 24 24" fill="none">
+                  <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"
+                        stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/>
+                </svg>
+                <svg class="icon icon-eye-off" viewBox="0 0 24 24" fill="none">
+                  <path d="M3.98 5.51A17.92 17.92 0 0112 5c7 0 11 7 11 7a17.92 17.92 0 01-4.33 5.19"
+                        stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M9.53 9.53A3 3 0 0014.47 14.47" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M2 2l20 20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          
+          <div class="form-field">
+            <label for="edit-hospital-id">Hospital ID</label>
+            <input id="edit-hospital-id" type="text" required />
+          </div>
+          
+          <div class="form-field">
+            <label for="edit-role">Role</label>
+            <select id="edit-role" required>
+              <option value="">เลือกบทบาท</option>
+              <option value="pharmacist">Pharmacist</option>
+              <option value="medtech">MedTech</option>
+            </select>
+          </div>
+          
+          <div id="edit-form-message" class="form-message"></div>
+          
+          <div class="modal-footer">
+            <button type="submit" class="btn primary">บันทึกการแก้ไข</button>
+            <button type="button" class="btn secondary" id="cancelEdit">ยกเลิก</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Settings Popup -->
+    <div id="settingsPopup" class="popup" style="display: none;">
+      <div class="popup-content">
+        <div class="popup-header">
+          <h3>Settings</h3>
+          <span class="close" id="closeSettings">&times;</span>
+        </div>
+        <div class="popup-body">
+          <div class="setting-item">
+            <label>Language:</label>
+            <select id="languageSetting">
+              <option value="th">ไทย (Thai)</option>
+              <option value="en">English</option>
+            </select>
+          </div>
+          <div class="setting-item">
+            <label>Theme:</label>
+            <select id="themeSetting">
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+            </select>
+          </div>
+          <div class="setting-item">
+            <label>Notifications:</label>
+            <input type="checkbox" id="notificationsSetting" checked>
+          </div>
+        </div>
+        <div class="popup-footer">
+          <button class="btn-primary" id="saveSettings">Save</button>
+          <button class="btn-secondary" id="cancelSettings">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+  <script src="../../view_Global/js/userProfile.js"></script>
+  <script src="../../view_Global/js/darkmode.js"></script>
+  <script src="./js/adminpage.js"></script>
+	<script src="../../view_Global/js/menu.js"></script>
+  <script src="../../view_Global/js/navbar_hover.js"></script>
+
+</body>
+</html>

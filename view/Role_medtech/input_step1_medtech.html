@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>ยืนยันการตรวจ - ขั้นตอนที่ 1</title>
+  <script>(function(){const t=localStorage.getItem('theme-mode');t==='dark'&&document.documentElement.classList.add('dark')})();</script>
+  
+  <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../view_Global/css/navbar.css">
+  <link rel="stylesheet" href="./css/input_step1_medtech.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="../../view_Global/css/darkmode.css">
+</head>
+<body class="step1-page">
+  <!-- Navbar -->
+  <header class="page-header">
+        <h2>Input information</h2>
+        <div class="header-buttons">
+          <button id="themeToggle" class="icon-btn">
+            <i class="fa fa-moon"></i>
+          </button>
+        </div>
+  </header>
+
+  <!-- Content -->
+  <main class="container">
+    <h3>ประเภทที่จะตรวจ</h3>
+
+    <div class="patient-box" id="patient-info">
+      <!-- จะถูกเติมข้อมูลผู้ป่วยจาก JS -->
+    </div>
+
+    <div class="dna-section">
+      <label for="dnaType">DNA Type:</label>
+      <select id="dnaType">
+        <option value="" disabled selected>เลือกประเภท DNA</option>
+        <option value="CYP2D6">CYP2D6</option>
+        <option value="CYP2C9">CYP2C9</option>
+        <option value="CYP2C19">CYP2C19</option>
+        <option value="VKORC1">VKORC1</option>
+        <option value="TPMT">TPMT</option>
+        <option value="CYP3A5">CYP3A5</option>
+      </select>
+      
+      <label for="specimenCategory">หมวดหมู่สิ่งส่งตรวจ:</label>
+      <select id="specimenCategory">
+        <option value="">-- เลือกหมวดหมู่ --</option>
+        <option value="SNP genotyping test">SNP genotyping test</option>
+        <option value="HLA/Drug-related SCAR screening test">HLA/Drug-related SCAR screening test</option>
+        <option value="Functional genomics test">Functional genomics test</option>
+        <option value="Drug/Gene-related toxicity test">Drug/Gene-related toxicity test</option>
+      </select>
+      
+      <label for="specimenType">สิ่งส่งตรวจ:</label>
+      <select id="specimenType">
+        <option value="">-- เลือกชนิดของสิ่งส่งตรวจ --</option>
+        <!-- Options loaded dynamically from Specimen table -->
+      </select>
+    </div>
+
+   <div class="btn-area">
+      <button class="back-btn">Back</button>
+
+      <button class="next-btn">Next</button>
+       
+   </div>
+  </main>
+
+  <!-- Settings Popup -->
+    <div id="settingsPopup" class="popup" style="display: none;">
+      <div class="popup-content">
+        <div class="popup-header">
+          <h3>Settings</h3>
+          <span class="close" id="closeSettings">&times;</span>
+        </div>
+        <div class="popup-body">
+          <div class="setting-item">
+            <label>Language:</label>
+            <select id="languageSetting">
+              <option value="th">ไทย (Thai)</option>
+              <option value="en">English</option>
+            </select>
+          </div>
+          <div class="setting-item">
+            <label>Theme:</label>
+            <select id="themeSetting">
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+            </select>
+          </div>
+          <div class="setting-item">
+            <label>Notifications:</label>
+            <input type="checkbox" id="notificationsSetting" checked>
+          </div>
+        </div>
+        <div class="popup-footer">
+          <button class="btn-primary" id="saveSettings">Save</button>
+          <button class="btn-secondary" id="cancelSettings">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script src="../../view_Global/js/userProfile.js"></script>
+  <script src="./js/input_step1_medtech.js"></script>
+  <script src="../../view_Global/js/darkmode.js"></script>
+  
+</body>
+</html>
